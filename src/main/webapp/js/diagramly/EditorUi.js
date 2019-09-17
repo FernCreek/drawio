@@ -10498,6 +10498,7 @@
 		// Receives XML message from opener and puts it into the graph
 		mxEvent.addListener(window, 'message', mxUtils.bind(this, function(evt)
 		{
+			var jsonData;
 			var validSource = window.opener || window.parent;
 			
 			if (evt.source != validSource)
@@ -10552,6 +10553,7 @@
 				try
 				{
 					data = JSON.parse(data);
+					jsonData = data;
 				}
 				catch (e)
 				{
@@ -11120,6 +11122,19 @@
 			{
 				data = extractDiagramXml(data);
 				doLoad(data, evt);
+				if (!data && jsonData.xml)
+				{
+					var uri = decodeURIComponent(jsonData.xml);
+					this.loadImage(uri, mxUtils.bind(this, function(img)
+					{
+						var w = Math.max(1, img.width);
+						var h = Math.max(1, img.height);
+						var maxSize = this.maxImageSize;
+
+						var s = Math.min(1, Math.min(maxSize / Math.max(1, w)), maxSize / Math.max(1, h));
+						this.importFile(uri, 'image', 0, 0, w*s, h*s);
+					}));
+				}
 			}
 		}));
 		
