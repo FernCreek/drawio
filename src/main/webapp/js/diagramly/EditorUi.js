@@ -10379,7 +10379,6 @@
 				this.installMessageHandler(mxUtils.bind(this, function(xml, evt, modified)
 				{
 					this.spinner.stop();
-					this.addEmbedButtons();
 					this.setGraphEnabled(true);
 					
 					if (xml != null && xml.length > 0)
