@@ -835,15 +835,6 @@ var EditDiagramDialog = function(editorUi)
 		select.appendChild(replaceOption);
 	}
 
-	var newOption = document.createElement('option');
-	newOption.setAttribute('value', 'new');
-	mxUtils.write(newOption, mxResources.get('openInNewWindow'));
-	
-	if (EditDiagramDialog.showNewWindowOption)
-	{
-		select.appendChild(newOption);
-	}
-
 	if (editorUi.editor.graph.isEnabled())
 	{
 		var importOption = document.createElement('option');
