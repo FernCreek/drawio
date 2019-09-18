@@ -10763,6 +10763,7 @@
 								msg.format = data.format;
 								msg.message = data;
 								msg.data = uri;
+								msg.modified = this.editor.modified;
 								msg.xml = encodeURIComponent(xml);
 								parent.postMessage(JSON.stringify(msg), '*');
 							});
