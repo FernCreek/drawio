@@ -7,7 +7,7 @@
 	/**
 	 * Specifies the app name. Default is document.title.
 	 */
-	Editor.prototype.appName = 'draw.io';
+	Editor.prototype.appName = 'Diagram Editor';
 	
 	/**
 	 * Known extensions for own files.
@@ -332,11 +332,11 @@
 		'#\n' +
 		'## ---- CSV below this line. First line are column names. ----\n' +
 		'name,position,id,location,manager,email,fill,stroke,refs,url,image\n' +
-		'Evan Miller,CFO,emi,Office 1,,me@example.com,#dae8fc,#6c8ebf,,https://www.draw.io,https://cdn3.iconfinder.com/data/icons/user-avatars-1/512/users-9-2-128.png\n' +
-		'Edward Morrison,Brand Manager,emo,Office 2,Evan Miller,me@example.com,#d5e8d4,#82b366,,https://www.draw.io,https://cdn3.iconfinder.com/data/icons/user-avatars-1/512/users-10-3-128.png\n' +
-		'Ron Donovan,System Admin,rdo,Office 3,Evan Miller,me@example.com,#d5e8d4,#82b366,"emo,tva",https://www.draw.io,https://cdn3.iconfinder.com/data/icons/user-avatars-1/512/users-2-128.png\n' +
-		'Tessa Valet,HR Director,tva,Office 4,Evan Miller,me@example.com,#d5e8d4,#82b366,,https://www.draw.io,https://cdn3.iconfinder.com/data/icons/user-avatars-1/512/users-3-128.png\n';
-	
+		'John T. Manager,General Manager,jtm,Office 1,,me@example.com,#dae8fc,#6c8ebf,,,\n' +
+		'Joe C. Developer,Developer,jcd,Office 2,John T. Manager,me@example.com,#d5e8d4,#82b366,,\n' +
+		'Jane B. Analyst,Analyst,jba,Office 3,John T. Manager,me@example.com,#d5e8d4,#82b366,"jcd,sat",,\n' +
+		'Sherry A. Tester,Tester,sat,Office 4,John T. Manager,me@example.com,#d5e8d4,#82b366,,,';
+			
 	/**
 	 * Helper function to extract the graph model XML node.
 	 */
@@ -1841,8 +1841,6 @@
 	 */
 	if (window.ColorDialog)
 	{
-		FilenameDialog.filenameHelpLink = 'https://desk.draw.io/support/solutions/articles/16000091426'; 
-		
 		var colorDialogAddRecentColor = ColorDialog.addRecentColor;
 		
 		ColorDialog.addRecentColor = function(color, max)
@@ -2264,12 +2262,6 @@
 	            
 	            option.style.paddingTop = '5px';
 	            div.appendChild(option);
-	            
-	            var help = ui.menus.createHelpLink('https://desk.draw.io/support/solutions/articles/16000032875');
-	            help.style.position = 'relative';
-	            help.style.marginLeft = '6px';
-	            help.style.top = '2px';
-	            option.appendChild(help);
 	        }
 	        
 			return div;
@@ -5121,17 +5113,6 @@
 		if (editorUi.editor.cancelFirst)
 		{
 			buttons.appendChild(cancelBtn);
-		}
-		
-		if (!editorUi.isOffline())
-		{
-			var helpBtn = mxUtils.button(mxResources.get('help'), function()
-			{
-				graph.openLink('https://desk.draw.io/support/solutions/articles/16000048947');
-			});
-			
-			helpBtn.className = 'geBtn';
-			buttons.appendChild(helpBtn);
 		}
 		
 		if (PrintDialog.previewEnabled)
