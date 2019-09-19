@@ -1685,11 +1685,6 @@
 				}), null, true, isInRoot);
 			}
 		}));
-		
-		this.put('publish', new Menu(mxUtils.bind(this, function(menu, parent)
-		{
-			this.addMenuItems(menu, ['publishLink'], parent);
-		})));
 
 		this.editorUi.actions.addAction('share...', mxUtils.bind(this, function()
 		{

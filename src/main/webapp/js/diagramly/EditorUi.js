@@ -4895,12 +4895,8 @@
 		
 		var fetchParam = (publicUrl != null) ? '&fetch=' + encodeURIComponent(publicUrl) : '';
 		var s2 = (fetchParam.length > 0) ?
-			(((urlParams['dev'] == '1') ?
-			'https://test.draw.io/embed2.js?dev=1' :
-			EditorUi.drawHost + '/embed2.js?')) + fetchParam :
-			(((urlParams['dev'] == '1') ?
-			'https://test.draw.io/js/viewer.min.js' :
-			window.VIEWER_URL ? window.VIEWER_URL : EditorUi.drawHost + '/js/viewer.min.js'));
+			(EditorUi.drawHost + '/embed2.js?') + fetchParam :
+			(window.VIEWER_URL ? window.VIEWER_URL : EditorUi.drawHost + '/js/viewer.min.js');
 		var scr = '<script type="text/javascript" src="' + s2 + '"></script>';
 		
 		fn(value, scr);
@@ -7768,12 +7764,6 @@
 		{
 			clearDefaultStyle.apply(this, arguments);
 		};
-		
-		// Sets help link for placeholders
-		if (!this.isOffline() && typeof window.EditDataDialog !== 'undefined')
-		{
-			EditDataDialog.placeholderHelpLink = 'https://desk.draw.io/support/solutions/articles/16000051979';
-		}
 		
 		// Passes current page to editor window
 		var editorGetEditBlankUrl = ui.editor.getEditBlankUrl;
@@ -11551,14 +11541,12 @@
 		this.actions.get('moveToFolder').setEnabled(file != null);
 		this.actions.get('makeCopy').setEnabled(file != null && !file.isRestricted());
 		this.actions.get('editDiagram').setEnabled(active && (file == null || !file.isRestricted()));
-		this.actions.get('publishLink').setEnabled(file != null && !file.isRestricted());
 		this.actions.get('tags').setEnabled(this.diagramContainer.style.visibility != 'hidden');
 		this.actions.get('find').setEnabled(this.diagramContainer.style.visibility != 'hidden');
 		this.actions.get('layers').setEnabled(this.diagramContainer.style.visibility != 'hidden');
 		this.actions.get('outline').setEnabled(this.diagramContainer.style.visibility != 'hidden');
 		this.actions.get('rename').setEnabled((file != null && file.isRenamable()) || urlParams['embed'] == '1');
 		this.actions.get('close').setEnabled(file != null);
-		this.menus.get('publish').setEnabled(file != null && !file.isRestricted());
 		
 		var state = graph.view.getState(graph.getSelectionCell());
 		this.actions.get('editShape').setEnabled(active && state != null && state.shape != null && state.shape.stencil != null);

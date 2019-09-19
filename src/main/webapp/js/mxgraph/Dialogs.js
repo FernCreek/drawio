@@ -1221,29 +1221,6 @@ var EditDataDialog = function(ui, cell)
 		
 		replace.appendChild(input);
 		mxUtils.write(replace, mxResources.get('placeholders'));
-		
-		if (EditDataDialog.placeholderHelpLink != null)
-		{
-			var link = document.createElement('a');
-			link.setAttribute('href', EditDataDialog.placeholderHelpLink);
-			link.setAttribute('title', mxResources.get('help'));
-			link.setAttribute('target', '_blank');
-			link.style.marginLeft = '8px';
-			link.style.cursor = 'help';
-			
-			var icon = document.createElement('img');
-			mxUtils.setOpacity(icon, 50);
-			icon.style.height = '16px';
-			icon.style.width = '16px';
-			icon.setAttribute('border', '0');
-			icon.setAttribute('valign', 'middle');
-			icon.style.marginTop = (mxClient.IS_IE11) ? '0px' : '-4px';
-			icon.setAttribute('src', Editor.helpImage);
-			link.appendChild(icon);
-			
-			replace.appendChild(link);
-		}
-		
 		buttons.appendChild(replace);
 	}
 	
