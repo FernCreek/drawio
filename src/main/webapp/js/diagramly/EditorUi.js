@@ -10422,8 +10422,7 @@
     			Editor.defaultCsvValue, mxUtils.bind(this, function(newValue)
 			{
     			this.importCsv(newValue);
-			}), null, null, 620, 430, null, true, true, mxResources.get('import'),
-				!this.isOffline() ? 'https://about.draw.io/import-from-csv-to-drawio/' : null);
+			}), null, null, 620, 430, null, true, true, mxResources.get('import'), null);
 		}
 		
 		this.showDialog(this.importCsvDialog.container, 640, 520, true, true, null, null, null, null, true);
@@ -11429,7 +11428,7 @@
 							html = '';
 							break;
 						case appCache.IDLE: // IDLE == 1
-							html = (uiTheme == 'min') ? '' : '<img title="draw.io is up to date." border="0" src="' + IMAGE_PATH + '/checkmark.gif"/>';
+							html = (uiTheme == 'min') ? '' : '<img title="Editor is up to date." border="0" src="' + IMAGE_PATH + '/checkmark.gif"/>';
 							break;
 						case appCache.DOWNLOADING: // DOWNLOADING == 3
 							html = '<img title="Downloading new version..." border="0" src="' + IMAGE_PATH + '/spin.gif"/>';
@@ -11824,7 +11823,7 @@
 			}
 			
 			if (pendingLibs == 0) this.spinner.stop();
-		}), null, null, 'https://desk.draw.io/support/solutions/articles/16000092763');
+		}), null, null, null);
 		this.showDialog(dlg.container, 340, 375, true, true, null, null, null, null, true);
 	};
 	
