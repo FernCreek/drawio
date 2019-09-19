@@ -365,11 +365,6 @@
 	EditorUi.prototype.formatEnabled = urlParams['format'] != '0';
 
 	/**
-	 * Whether template action should be shown in insert menu.
-	 */
-	EditorUi.prototype.insertTemplateEnabled = true;
-	
-	/**
 	 * Restores app defaults for UI
 	 */
 	EditorUi.prototype.closableScratchpad = true;
@@ -9822,75 +9817,7 @@
 					
 					return;
 				}
-				else if (data.action == 'template')
-				{
-					this.spinner.stop();
-					
-					var enableRecentDocs = data.enableRecent == 1;
-					var enableSearchDocs = data.enableSearch == 1;
-					var enableCustomTemp = data.enableCustomTemp == 1;
-					
-					var dlg = new NewDialog(this, false, data.callback != null, mxUtils.bind(this, function(xml, name)
-					{
-						xml = xml || this.emptyDiagramXml;
-						
-						// LATER: Add autosave option in template message
-						if (data.callback != null)
-						{
-							parent.postMessage(JSON.stringify({event: 'template', xml: xml,
-								blank: xml == this.emptyDiagramXml, name: name}), '*');
-						}
-						else
-						{
-							fn(xml, evt, xml != this.emptyDiagramXml);
-							
-							// Workaround for status updated before modified applied
-							if (!this.editor.modified)
-							{
-								this.editor.setStatus('');
-							}
-						}
-					}), null, null, null, null, null, null, null, 
-					enableRecentDocs? mxUtils.bind(this, function(recentReadyCallback) 
-					{
-						this.remoteInvoke('getRecentDiagrams', null, null, recentReadyCallback, function()
-						{
-							recentReadyCallback(null, 'Network Error!');
-						});
-					}) : null, 
-					enableSearchDocs?  mxUtils.bind(this, function(searchStr, searchReadyCallback) 
-					{
-						this.remoteInvoke('searchDiagrams', [searchStr], null, searchReadyCallback, function()
-						{
-							searchReadyCallback(null, 'Network Error!');
-						});
-					}) : null, 
-					mxUtils.bind(this, function(url, info, name) 
-					{
-						//If binary files are possible, we can get the file content using remote invokation, imported it, and send final mxFile back
-						parent.postMessage(JSON.stringify({event: 'template', docUrl: url, info: info,
-							name: name}), '*');
-					}), null, null,
-					enableCustomTemp? mxUtils.bind(this, function(customTempCallback) 
-					{
-						this.remoteInvoke('getCustomTemplates', null, null, customTempCallback, function()
-						{
-							customTempCallback({}, 0); //ignore error by sending empty templates
-						});
-					}) : null);
-
-					this.showDialog(dlg.container, 620, 440, true, false, mxUtils.bind(this, function(cancel)
-					{
-						if (cancel)
-						{
-							this.actions.get('exit').funct();
-						}
-					}));
-					dlg.init();
-					
-					return;
-				}
-				else if (data.action == 'textContent')
+							else if (data.action == 'textContent')
 				{
 					//TODO Remove this message and use remove invokation instead
 					var allPagesTxt = this.getDiagramTextContent();

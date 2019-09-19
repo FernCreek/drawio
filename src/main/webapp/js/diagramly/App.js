@@ -2920,20 +2920,6 @@ App.prototype.showSplash = function(force)
 			this.showSplash();
 		}));
 	}
-	else if (!mxClient.IS_CHROMEAPP && (this.mode == null || force))
-	{
-		var rowLimit = (serviceCount == 4) ? 2 : 3;
-		
-		var dlg = new StorageDialog(this, mxUtils.bind(this, function()
-		{
-			this.hideDialog();
-			showSecondDialog();
-		}), rowLimit);
-		
-		this.showDialog(dlg.container, (rowLimit < 3) ? 240 : 300,
-			(serviceCount >= 4) ? 440 : ((this.isOfflineApp()) ? 300 : 320), true, false);
-		dlg.init();
-	}
 	else if (urlParams['create'] == null)
 	{
 		showSecondDialog();

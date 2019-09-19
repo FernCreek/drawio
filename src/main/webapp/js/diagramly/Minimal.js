@@ -892,12 +892,6 @@ EditorUi.initMinimalTheme = function()
         {
             ui.menus.addMenuItems(menu, ['insertRectangle', 'insertEllipse', 'insertRhombus', '-',
             	'insertText', 'insertLink', '-', 'insertImage'], parent);
-            
-            if (ui.insertTemplateEnabled && !ui.isOffline())
-			{
-                ui.menus.addMenuItems(menu, ['insertTemplate'], parent);
-			}
-            
             menu.addSeparator(parent);
             this.addMenuItems(menu, ['createShape', 'insertFreehand', '-'], parent);
 			this.addSubmenu('insertLayout', menu, parent, mxResources.get('layout'));
