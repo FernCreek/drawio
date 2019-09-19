@@ -830,21 +830,6 @@ Actions.prototype.init = function()
 		graph.openLink(RESOURCES_PATH + '/help' + ext + '.html');
 	});
 	
-	var showingAbout = false;
-	
-	this.put('about', new Action(mxResources.get('about') + ' Graph Editor...', function()
-	{
-		if (!showingAbout)
-		{
-			ui.showDialog(new AboutDialog(ui).container, 320, 280, true, true, function()
-			{
-				showingAbout = false;
-			});
-			
-			showingAbout = true;
-		}
-	}, null, null, 'F1'));
-	
 	// Font style actions
 	var toggleFontStyle = mxUtils.bind(this, function(key, style, fn, shortcut)
 	{

@@ -94,24 +94,7 @@
 			
 			dlg.init();
 		});
-
-		editorUi.actions.put('exportSvg', new Action(mxResources.get('formatSvg') + '...', function()
-		{
-			editorUi.showExportDialog(mxResources.get('formatSvg'), true, mxResources.get('export'),
-				'https://support.draw.io/display/DO/Exporting+Files',
-				mxUtils.bind(this, function(scale, transparentBackground, ignoreSelection, addShadow,
-					editable, embedImages, border, cropImage, currentPage, linkTarget)
-				{
-					var val = parseInt(scale);
-					
-					if (!isNaN(val) && val > 0)
-					{
-					   	editorUi.exportSvg(val / 100, transparentBackground, ignoreSelection, addShadow,
-					   		editable, embedImages, border, !cropImage, currentPage, linkTarget);
-					}
-				}), true, null, 'svg');
-		}));
-		
+	
 		editorUi.actions.put('insertTemplate', new Action(mxResources.get('template') + '...', function()
 		{
 			var dlg = new NewDialog(editorUi, null, false, function(xml)
@@ -594,61 +577,7 @@
 				dlg.init();
 			}
 		}));
-		
-		editorUi.actions.put('exportPng', new Action(mxResources.get('formatPng') + '...', function()
-		{
-			if (editorUi.isExportToCanvas())
-			{
-				editorUi.showExportDialog(mxResources.get('image'), false, mxResources.get('export'),
-					'https://support.draw.io/display/DO/Exporting+Files',
-					mxUtils.bind(this, function(scale, transparentBackground, ignoreSelection,
-						addShadow, editable, embedImages, border, cropImage, currentPage, dummy, grid)
-					{
-						var val = parseInt(scale);
-						
-						if (!isNaN(val) && val > 0)
-						{
-						   	editorUi.exportImage(val / 100, transparentBackground, ignoreSelection,
-						   		addShadow, editable, border, !cropImage, currentPage, null, grid);
-						}
-					}), true, true, 'png');
-			}
-			else if (!editorUi.isOffline() && (!mxClient.IS_IOS || !navigator.standalone))
-			{
-				editorUi.showRemoteExportDialog(mxResources.get('export'), null, mxUtils.bind(this, function(ignoreSelection, editable, transparent, scale, border)
-				{
-					editorUi.downloadFile((editable) ? 'xmlpng' : 'png', null, null, ignoreSelection, null, null, transparent, scale, border);
-				}), false, true);
-			}
-		}));
-		
-		editorUi.actions.put('exportJpg', new Action(mxResources.get('formatJpg') + '...', function()
-		{
-			if (editorUi.isExportToCanvas())
-			{
-				editorUi.showExportDialog(mxResources.get('image'), false, mxResources.get('export'),
-					'https://support.draw.io/display/DO/Exporting+Files',
-					mxUtils.bind(this, function(scale, transparentBackground, ignoreSelection,
-						addShadow, editable, embedImages, border, cropImage, currentPage, dummy, grid)
-					{
-						var val = parseInt(scale);
-						
-						if (!isNaN(val) && val > 0)
-						{
-							editorUi.exportImage(val / 100, false, ignoreSelection,
-							   	addShadow, false, border, !cropImage, false, 'jpeg', grid);
-						}
-					}), true, false, 'jpeg');
-			}
-			else if (!editorUi.isOffline() && (!mxClient.IS_IOS || !navigator.standalone))
-			{
-				editorUi.showRemoteExportDialog(mxResources.get('export'), null, mxUtils.bind(this, function(ignoreSelection, editable, tranaparent, scale, border)
-				{
-					editorUi.downloadFile('jpeg', null, null, ignoreSelection, null, null, null, scale, border);
-				}), true, true);
-			}
-		}));
-		
+
 		action = editorUi.actions.put('shadowVisible', new Action(mxResources.get('shadow'), function()
 		{
 			graph.setShadowVisible(!graph.shadowVisible);
@@ -656,66 +585,12 @@
 		action.setToggleAction(true);
 		action.setSelectedCallback(function() { return graph.shadowVisible; });
 
-		var showingAbout = false;
-		
-		editorUi.actions.put('about', new Action(mxResources.get('aboutDrawio') + '...', function()
-		{
-			if (!showingAbout)
-			{
-				editorUi.showDialog(new AboutDialog(editorUi).container, 220, 300, true, true, function()
-				{
-					showingAbout = false;
-				});
-				
-				showingAbout = true;
-			}
-			
-		}, null, null, 'F1'));
-		
-		editorUi.actions.addAction('userManual...', function()
-		{
-			editorUi.openLink('https://support.draw.io/display/DO/Draw.io+Online+User+Manual');
-		});
-
-		editorUi.actions.addAction('support...', function()
-		{
-			editorUi.openLink('https://about.draw.io/support/');
-		});
-
 		editorUi.actions.addAction('exportOptionsDisabled...', function()
 		{
 			editorUi.handleError({message: mxResources.get('exportOptionsDisabledDetails')},
 				mxResources.get('exportOptionsDisabled'));
 		});
 
-		editorUi.actions.addAction('keyboardShortcuts...', function()
-		{
-			if (mxClient.IS_CHROMEAPP || EditorUi.isElectronApp)
-			{
-				editorUi.openLink('https://www.draw.io/shortcuts.svg');
-			}
-			else if (mxClient.IS_SVG)
-			{
-				editorUi.openLink('shortcuts.svg');
-			}
-			else
-			{
-				editorUi.openLink('https://www.draw.io/?lightbox=1#Uhttps%3A%2F%2Fwww.draw.io%2Fshortcuts.svg');
-			}
-		});
-
-		editorUi.actions.addAction('feedback...', function()
-		{
-			var dlg = new FeedbackDialog(editorUi);
-			editorUi.showDialog(dlg.container, 610, 360, true, true);
-			dlg.init();
-		});
-
-		editorUi.actions.addAction('quickStart...', function()
-		{
-			editorUi.openLink('https://www.youtube.com/watch?v=Z0D96ZikMkc');
-		});
-		
 		action = editorUi.actions.addAction('tags...', mxUtils.bind(this, function()
 		{
 			if (this.tagsWindow == null)
@@ -2295,23 +2170,6 @@
     		
 	    	return cell;
 		};
-		
-		editorUi.actions.put('exportSvg', new Action(mxResources.get('formatSvg') + '...', function()
-		{
-			editorUi.showExportDialog(mxResources.get('formatSvg'), true, mxResources.get('export'),
-				'https://support.draw.io/display/DO/Exporting+Files',
-				mxUtils.bind(this, function(scale, transparentBackground, ignoreSelection, addShadow,
-					editable, embedImages, border, cropImage, currentPage, linkTarget)
-				{
-					var val = parseInt(scale);
-					
-					if (!isNaN(val) && val > 0)
-					{
-					   	editorUi.exportSvg(val / 100, transparentBackground, ignoreSelection, addShadow,
-					   		editable, embedImages, border, !cropImage, currentPage, linkTarget);
-					}
-				}), true, null, 'svg');
-		}));
 		
 		editorUi.actions.put('insertText', new Action(mxResources.get('text'), function()
 		{
