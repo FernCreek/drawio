@@ -947,13 +947,6 @@ EditorUi.initMinimalTheme = function()
         this.put('view', new Menu(mxUtils.bind(this, function(menu, parent)
         {
             ui.menus.addMenuItems(menu, ['grid', 'guides', '-', 'connectionArrows', 'connectionPoints', '-'], parent);
-            
-			if (typeof(MathJax) !== 'undefined')
-			{
-				var item = ui.menus.addMenuItem(menu, 'mathematicalTypesetting', parent);
-				ui.menus.addLinkToItem(item, 'https://desk.draw.io/support/solutions/articles/16000032875');
-			}
-			
             ui.menus.addMenuItems(menu, ['copyConnect', 'collapseExpand', '-', 'pageScale'], parent);
         })));
 	};

@@ -891,7 +891,7 @@ mxShapeIOS7URL.prototype.background = function(c, w, h)
 
 mxShapeIOS7URL.prototype.foreground = function(c, w, h)
 {
-	var mainText = mxUtils.getValue(this.style, mxIOS7C.BUTTON_TEXT, 'draw.io');
+	var mainText = mxUtils.getValue(this.style, mxIOS7C.BUTTON_TEXT, 'perforce.com');
 	var fontColor = mxUtils.getValue(this.style, mxIOS7C.STYLE_TEXTCOLOR, '#666666');
 	var strokeColor2 = mxUtils.getValue(this.style, mxIOS7C.STYLE_STROKECOLOR2, '#008cff');
 	var fontSize = mxUtils.getValue(this.style, mxIOS7C.STYLE_TEXTSIZE, '17');
