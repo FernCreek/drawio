@@ -1479,33 +1479,6 @@ App.prototype.init = function()
 		this.menubar.container.appendChild(this.buttonContainer);
 	}
 
-	if (uiTheme == 'atlas' && this.menubar != null)
-	{
-		if (this.toggleElement != null)
-		{
-			this.toggleElement.click();
-			this.toggleElement.style.display = 'none';
-		}
-		
-		this.icon = document.createElement('img');
-		this.icon.setAttribute('src', IMAGE_PATH + '/logo-flat-small.png');
-		this.icon.setAttribute('title', mxResources.get('draw.io'));
-		this.icon.style.padding = '6px';
-		this.icon.style.cursor = 'pointer';
-		
-		mxEvent.addListener(this.icon, 'click', mxUtils.bind(this, function(evt)
-		{
-			this.appIconClicked(evt);
-		}));
-		
-		if (mxClient.IS_QUIRKS)
-		{
-			this.icon.style.marginTop = '12px';
-		}
-		
-		this.menubar.container.insertBefore(this.icon, this.menubar.container.firstChild);
-	}
-	
 	if (this.editor.graph.isViewer())
 	{
 		this.initializeViewerMode();
