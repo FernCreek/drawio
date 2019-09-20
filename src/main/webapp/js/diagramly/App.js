@@ -371,12 +371,6 @@ App.getStoredMode = function()
 	{
 		if (urlParams['offline'] != '1')
 		{
-			// Switches to dropbox mode for db.draw.io
-			if (window.location.hostname == 'db.draw.io' && urlParams['mode'] == null)
-			{
-				urlParams['mode'] = 'dropbox';
-			}
-			
 			App.mode = urlParams['mode'];
 			
 			if (App.mode == null)
@@ -1252,41 +1246,6 @@ App.prototype.init = function()
 						this.updateUserElement();
 						this.restoreLibraries();
 						this.checkLicense();
-						
-						if (App.GOOGLE_REALTIME_EOL - Date.now() >= 0)
-						{
-							if (this.drive.user != null && (!isLocalStorage || mxSettings.settings == null ||
-								mxSettings.settings.closeRealtimeWarning == null || mxSettings.settings.closeRealtimeWarning <
-								new Date().getTime() - (2 * 24 * 60 * 60 * 1000)) &&
-								(!this.editor.chromeless || this.editor.editable))
-							{
-								this.drive.checkRealtimeFiles(mxUtils.bind(this, function()
-								{
-									var footer = createFooter('You need to take action to convert legacy files. Click here.',
-										'https://desk.draw.io/support/solutions/articles/16000092210',
-										'geStatusAlert',
-										mxUtils.bind(this, function()
-										{
-											footer.parentNode.removeChild(footer);
-											this.hideFooter();
-					
-											// Close permanently
-											if (isLocalStorage && mxSettings.settings != null)
-											{
-												mxSettings.settings.closeRealtimeWarning = Date.now();
-												mxSettings.save();
-											}
-										}));
-	
-									document.body.appendChild(footer);
-									
-									window.setTimeout(mxUtils.bind(this, function()
-									{
-										mxUtils.setPrefixedStyle(footer.style, 'transform', 'translate(-50%,0%)');
-									}), 1500);
-								}));
-							}
-						}
 					}))
 					
 					// Notifies listeners of new client
@@ -1529,12 +1488,7 @@ App.prototype.sanityCheck = function()
  */
 App.prototype.isDriveDomain = function()
 {
-	return urlParams['drive'] != '0' &&
-		(window.location.hostname == 'test.draw.io' ||
-		window.location.hostname == 'cdn.draw.io' ||
-		window.location.hostname == 'www.draw.io' ||
-		window.location.hostname == 'drive.draw.io' ||
-		window.location.hostname == 'jgraph.github.io');
+	return false;
 };
 
 /**
@@ -1542,7 +1496,7 @@ App.prototype.isDriveDomain = function()
  */
 App.prototype.isLegacyDriveDomain = function()
 {
-	return urlParams['drive'] == 0 || window.location.hostname == 'legacy.draw.io';
+	return false;
 };
 
 /**
