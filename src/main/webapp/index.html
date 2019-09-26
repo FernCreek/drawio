@@ -4,7 +4,7 @@
     <title>Flowchart Maker &amp; Online Diagram Software</title>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<script type="text/javascript">
 		var mxIsElectron = (window && window.process && window.process.type) || (navigator.userAgent.toLowerCase().indexOf(' electron/') > -1);
 		
@@ -191,6 +191,8 @@
 
 		var t0 = new Date();
 
+		// Load the resources
+		mxscript('resources/dia.js');
 		// Load the app
 		mxscript('js/app.min.js');
 
