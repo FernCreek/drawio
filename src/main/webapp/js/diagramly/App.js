@@ -659,134 +659,24 @@ App.main = function(callback, createUi)
 		Editor.initMath();
 	}
 
-	function doLoad(bundle)
-	{
-		// Prefetches asynchronous requests so that below code runs synchronous
-		// Loading the correct bundle (one file) via the fallback system in mxResources. The stylesheet
-		// is compiled into JS in the build process and is only needed for local development.
-		mxUtils.getAll((urlParams['dev'] != '1') ? [bundle] : [bundle,
-			STYLE_PATH + '/default.xml', STYLE_PATH + '/dark-default.xml'], function(xhr)
-		{
-			// Adds bundle text to resources
-			mxResources.parse(xhr[0].getText());
-			
-			// Prepares themes with mapping from old default-style to old XML file
-			if (xhr.length > 2)
-			{
-				Graph.prototype.defaultThemes['default-style2'] = xhr[1].getDocumentElement();
-	 			Graph.prototype.defaultThemes['darkTheme'] = xhr[2].getDocumentElement();
-			}
-			
-			// Main
-			var ui = (createUi != null) ? createUi() : new App(new Editor(
-					urlParams['chrome'] == '0' || uiTheme == 'min',
-					null, null, null, urlParams['chrome'] != '0'));
-			
-			if (window.mxscript != null)
-			{
-				// Loads dropbox for all browsers but IE8 and below (no CORS) if not disabled or if enabled and in embed mode
-				// KNOWN: Picker does not work in IE11 (https://dropbox.zendesk.com/requests/1650781)
-				if (typeof window.DropboxClient === 'function' &&
-					(window.Dropbox == null && window.DrawDropboxClientCallback != null &&
-					(((urlParams['embed'] != '1' && urlParams['db'] != '0') ||
-					(urlParams['embed'] == '1' && urlParams['db'] == '1')) &&
-					isSvgBrowser && (document.documentMode == null || document.documentMode > 9))))
-				{
-					mxscript(App.DROPBOX_URL, function()
-					{
-						// Must load this after the dropbox SDK since they use the same namespace
-						mxscript(App.DROPINS_URL, function()
-						{
-							DrawDropboxClientCallback();
-						}, 'dropboxjs', App.DROPBOX_APPKEY);
-					});
-				}
-				// Disables client
-				else if (typeof window.Dropbox === 'undefined' || typeof window.Dropbox.choose === 'undefined')
-				{
-					window.DropboxClient = null;
-				}
-					
-				// Loads OneDrive for all browsers but IE6/IOS if not disabled or if enabled and in embed mode
-				if (typeof window.OneDriveClient === 'function' &&
-					(typeof OneDrive === 'undefined' && window.DrawOneDriveClientCallback != null &&
-					(((urlParams['embed'] != '1' && urlParams['od'] != '0') || (urlParams['embed'] == '1' &&
-					urlParams['od'] == '1')) && (navigator.userAgent.indexOf('MSIE') < 0 || document.documentMode >= 10))))
-				{
-					mxscript(App.ONEDRIVE_URL, window.DrawOneDriveClientCallback);
-				}
-				// Disables client
-				else if (typeof window.OneDrive === 'undefined')
-				{
-					window.OneDriveClient = null;
-				}
-				
-				// Loads Trello for all browsers but < IE10 if not disabled or if enabled and in embed mode
-				if (typeof window.TrelloClient === 'function' &&
-					(typeof window.Trello === 'undefined' && window.DrawTrelloClientCallback != null &&
-					(((urlParams['embed'] != '1' && urlParams['tr'] != '0') || (urlParams['embed'] == '1' &&
-					urlParams['tr'] == '1')) && (navigator.userAgent.indexOf('MSIE') < 0 || document.documentMode >= 10))))
-				{
-					mxscript(App.TRELLO_JQUERY_URL, function()
-					{
-						// Must load this after the dropbox SDK since they use the same namespace
-						mxscript(App.TRELLO_URL, function()
-						{
-							DrawTrelloClientCallback();
-						});
-					});
-				}
-				// Disables client
-				else if (typeof window.Trello === 'undefined')
-				{
-					window.TrelloClient = null;
-				}
-	
-			}
-			
-			if (callback != null)
-			{
-				callback(ui);
-			}
-			
-			/**
-			 * For developers only
-			 */
-			if (urlParams['chrome'] != '0' && urlParams['test'] == '1')
-			{
-				EditorUi.debug('Started in ' + (new Date().getTime() - t0.getTime()) + 'ms');
-				
-				if (urlParams['export'] != null)
-				{
-					EditorUi.debug('Export:', EXPORT_URL);
-				}
-			}
-		}, function(xhr)
-		{
-			var st = document.getElementById('geStatus');
-			
-			if (st != null)
-			{
-				st.innerHTML = 'Error loading page. <a>Please try refreshing.</a>';
-				
-				// Tries reload with default resources in case any language resources were not available
-				st.getElementsByTagName('a')[0].onclick = function()
-				{
-					mxLanguage = 'en';
-					doLoad(mxResources.getDefaultBundle(RESOURCE_BASE, mxLanguage) ||
-							mxResources.getSpecialBundle(RESOURCE_BASE, mxLanguage));
-				};
-			}
-		});
-	};
-
 	function doMain()
 	{
 		// Adds required resources (disables loading of fallback properties, this can only
 		// be used if we know that all keys are defined in the language specific file)
 		mxResources.loadDefaultBundle = false;
-		doLoad(mxResources.getDefaultBundle(RESOURCE_BASE, mxLanguage) ||
-			mxResources.getSpecialBundle(RESOURCE_BASE, mxLanguage));
+		mxResources.parse(window.getResourceText());
+		// Main
+		var ui = (createUi != null) ? createUi() : new App(new Editor(
+			urlParams['chrome'] == '0' || uiTheme == 'min',
+			null, null, null, urlParams['chrome'] != '0'));
+		window.DropboxClient = null;
+		window.OneDriveClient = null;
+		window.TrelloClient = null;
+		window.mxApp = ui;
+		if (callback != null)
+		{
+			callback(ui);
+		}
 	};
 	
 	// Optional override for autosaveDelay and defaultEdgeLength
