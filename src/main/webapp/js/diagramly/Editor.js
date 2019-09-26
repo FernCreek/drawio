@@ -522,13 +522,22 @@
 				if (type == 'zTXt')
 				{
 					var idx = value.indexOf(String.fromCharCode(0));
-					
-					if (value.substring(0, idx) == 'mxGraphModel')
+					var key = value.substring(0, idx);
+					if (key == 'mxGraphModel')
 					{
 						// Workaround for Java URL Encoder using + for spaces, which isn't compatible with JS
 						var xmlData = Graph.bytesToString(pako.inflateRaw(
 							value.substring(idx + 2))).replace(/\+/g,' ');
 						
+						if (xmlData != null && xmlData.length > 0)
+						{
+							result = xmlData;
+						}
+					}
+					if (key == 'mxfile')
+					{
+						var xmlData = Graph.bytesToString(pako.inflate(
+							value.substring(idx + 2)));						
 						if (xmlData != null && xmlData.length > 0)
 						{
 							result = xmlData;
@@ -1655,7 +1664,7 @@
 					
 					w = Math.ceil(scale * w) + 2 * border;
 					h = Math.ceil(scale * h) + 2 * border;
-					
+
 					canvas.setAttribute('width', w);
 			   		canvas.setAttribute('height', h);
 			   		var ctx = canvas.getContext('2d');
@@ -1697,7 +1706,7 @@
 			img.onerror = function(e)
 			{
 				//console.log('img', e, img.src);
-				
+
 				if (error != null)
 				{
 					error(e);
@@ -1735,7 +1744,7 @@
 			catch (e)
 			{
 				//console.log('src', e, img.src);
-				
+			
 				if (error != null)
 				{
 					error(e);
