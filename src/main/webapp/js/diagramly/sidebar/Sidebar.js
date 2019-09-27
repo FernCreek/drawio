@@ -84,7 +84,6 @@
 	                                   {id: 'android', prefix: 'android', libs: [''/*prefix is library*/]},
 	                                   {id: 'flowchart'}, {id: 'basic'}, {id: 'infographic'}, {id: 'arrows'}, {id: 'arrows2'}, {id: 'lean_mapping'}, {id: 'citrix'}, {id: 'network'}, {id: 'vvd'}, 
 	                                   {id: 'sitemap'}, {id: 'dfd'},
-	                                   {id: 'mscae', prefix: 'mscae', libs: ['Companies', 'EnterpriseFlat', 'Cloud', 'Enterprise', 'General', 'General Symbols', 'Intune', 'OMS', 'OpsManager', 'Other', 'System Center', 'Virtual Machine', 'Deprecated', 'Cloud Color', 'Deprecated Color']},
 	                                   {id: 'active_directory'},
 	                                   {id: 'bpmn', prefix: 'bpmn', libs: [''/*prefix is library*/, 'Gateways', 'Events']},
 	                                   {id: 'clipart', prefix: null, libs: ['computer', 'finance', 'clipart', 'networking', 'people', 'telco']},
@@ -369,7 +368,6 @@
             			{title: mxResources.get('networking'),
             			entries: [
 			            			// TODO: Add isometric containers  		                          
-            			          {title: 'Cloud & Enterprise', id: 'mscae', image: IMAGE_PATH + '/sidebar-mscae.png'},
             			          {title: mxResources.get('cisco'), id: 'cisco', image: IMAGE_PATH + '/sidebar-cisco.png'},
             			          {title: 'Cisco Safe', id: 'cisco_safe', image: IMAGE_PATH + '/sidebar-cisco_safe.png'},
             			          {title: 'Cumulus', id: 'cumulus', image: IMAGE_PATH + '/sidebar-cumulus.png'},
@@ -760,7 +758,6 @@
 		this.addMockupPalette();
 		this.addSitemapPalette();
 		this.addUmlPalette(false);
-		this.addMSCAEPalette();
 		
 		for (var i = 0; i < cisco.length; i++)
 		{
