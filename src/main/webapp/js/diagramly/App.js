@@ -525,13 +525,6 @@ App.main = function(callback, createUi)
 		}
 	}
 	
-	// Redirects to the latest AWS icons
-	if (document.referrer != null && urlParams['libs'] == 'aws3' &&
-		document.referrer.substring(0, 42) == 'https://aws.amazon.com/architecture/icons/')
-	{
-		urlParams['libs'] = 'aws4';
-	}
-	
 	if (window.mxscript != null)
 	{
 		// Injects offline dependencies

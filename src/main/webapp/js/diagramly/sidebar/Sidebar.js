@@ -21,7 +21,7 @@
 	/**
 	 * Aliases for IDs in the libs parameter.
 	 */
-	Sidebar.prototype.libAliases = {'aws2': 'aws3', 'gcp' : 'gcp2'};
+	Sidebar.prototype.libAliases = {'gcp' : 'gcp2'};
 	
 	/**
 	 * 
@@ -59,22 +59,6 @@
 	Sidebar.prototype.gmdl = ['Bottom Navigation', 'Bottom Sheets', 'Buttons', 'Cards', 'Chips', 'Dialogs', 'Dividers', 'Grid Lists', 'Icons', 'Lists', 'Menus', 'Misc', 'Pickers', 
 	                          'Selection Controls', 'Sliders', 'Steppers', 'Tabs', 'Text Fields'];
 
-	Sidebar.prototype.aws2 = ['Analytics', 'Application Services', 'Compute', 'Database', 'Developer Tools', 'Enterprise Applications', 'Game Development', 'General', 'Internet of Things',  
-	                          'Management Tools', 'Mobile Services', 'Networking', 'On-Demand Workforce', 'SDKs', 'Security and Identity', 'Storage and Content Delivery', 'Groups'];
-
-	Sidebar.prototype.aws3 = ['Analytics', 'Application Services', 'Artificial Intelligence', 'Business Productivity', 'Compute', 'Contact Center', 'Database', 'Desktop and App Streaming', 'Developer Tools', 
-	                          'Game Development', 'General', 'Groups', 'Internet of Things',  
-	                          'Management Tools', 'Messaging', 'Migration', 'Mobile Services', 'Networking and Content Delivery', 'On Demand Workforce', 'SDKs', 'Security Identity and Compliance', 'Storage'];
-	
-	Sidebar.prototype.aws4b = ['Arrows', 'General Resources', 'Illustrations', 'Groups Light', 'Groups Dark', 'Analytics', 'Application Integration', 'AR VR', 'Cost Management', 'Business Productivity', 'Compute', 'Customer Engagement',
-							  'Database', 'Desktop App Streaming', 'Developer Tools', 'Game Development', 'Internet of Things', 'IoT Things', 'IoT Resources', 'Machine Learning', 'Management Tools',
-							  'Media Services', 'Migration', 'Mobile Services', 'Network Content Delivery', 'Security Identity Compliance', 'Storage'];
-	
-	Sidebar.prototype.aws4 = ['Arrows', 'General Resources', 'Illustrations', 'Groups', 'Analytics', 'Application Integration', 'AR VR', 'Cost Management', 'Blockchain', 
-							  'Business Applications', 'EC2 Instance Types', 'Compute', 'Customer Engagement',
-							  'Database', 'End User Computing', 'Developer Tools', 'Game Tech', 'Internet of Things', 'IoT Things', 'IoT Resources', 'Machine Learning', 'Management Governance',
-							  'Media Services', 'Migration Transfer', 'Mobile', 'Network Content Delivery', 'Robotics', 'Satellite', 'Security Identity Compliance', 'Storage'];
-
 	Sidebar.prototype.office = ['Clouds', 'Communications', 'Concepts', 'Databases', 'Devices', 'Security', 'Servers', 'Services', 'Sites', 'Users'];
 
 	Sidebar.prototype.archimate3 = ['Application', 'Business', 'Composite', 'Implementation and Migration', 'Motivation', 'Physical', 'Relationships', 'Strategy', 'Technology'];
@@ -99,7 +83,7 @@
 	 */
 	Sidebar.prototype.configuration = [{id: 'general', libs: ['general', 'misc', 'advanced']}, {id: 'uml'}, {id: 'search'}, {id: 'er'},
 	                                   {id: 'ios', prefix: 'ios', libs: [''/*prefix is library*/, '7icons', '7ui']}, 
-	                                   {id: 'android', prefix: 'android', libs: [''/*prefix is library*/]}, {id: 'aws3d'},
+	                                   {id: 'android', prefix: 'android', libs: [''/*prefix is library*/]},
 	                                   {id: 'flowchart'}, {id: 'basic'}, {id: 'infographic'}, {id: 'arrows'}, {id: 'arrows2'}, {id: 'lean_mapping'}, {id: 'citrix'}, {id: 'network'}, {id: 'vvd'}, 
 	                                   {id: 'sitemap'}, {id: 'dfd'},
 	                                   {id: 'mscae', prefix: 'mscae', libs: ['Companies', 'EnterpriseFlat', 'Cloud', 'Enterprise', 'General', 'General Symbols', 'Intune', 'OMS', 'OpsManager', 'Other', 'System Center', 'Virtual Machine', 'Deprecated', 'Cloud Color', 'Deprecated Color']},
@@ -119,10 +103,6 @@
 //           	                           {id: 'gcp19', prefix: 'gcp19', libs: Sidebar.prototype.gcp2},
            	                           {id: 'rack', prefix: 'rack', libs: Sidebar.prototype.rack},
            	                           {id: 'electrical', prefix: 'electrical', libs: Sidebar.prototype.electrical},
-           	                           {id: 'aws2', prefix: 'aws2', libs: Sidebar.prototype.aws2},
-           	                           {id: 'aws3', prefix: 'aws3', libs: Sidebar.prototype.aws3},
-           	                           {id: 'aws4b', prefix: 'aws4b', libs: Sidebar.prototype.aws4b},
-           	                           {id: 'aws4', prefix: 'aws4', libs: Sidebar.prototype.aws4},
            	                           {id: 'pid', prefix: 'pid', libs: Sidebar.prototype.pids},
            	                           {id: 'cisco', prefix: 'cisco', libs: Sidebar.prototype.cisco},
            	                           {id: 'cisco_safe', prefix: 'cisco_safe', libs: Sidebar.prototype.cisco_safe},
@@ -391,11 +371,7 @@
             			          {title: mxResources.get('uml'), id: 'uml', image: IMAGE_PATH + '/sidebar-uml.png'}]},
             			{title: mxResources.get('networking'),
             			entries: [{title: 'Allied Telesis', id: 'allied_telesis', image: IMAGE_PATH + '/sidebar-allied_telesis.png'},
-            					  {title: 'AWS17', id: 'aws3', image: IMAGE_PATH + '/sidebar-aws3.png'},
-							      {title: 'AWS18', id: 'aws4b', image: IMAGE_PATH + '/sidebar-aws4.png'},
-							      {title: 'AWS19', id: 'aws4', image: IMAGE_PATH + '/sidebar-aws4.png'},
 			            			// TODO: Add isometric containers  		                          
-            			          {title: mxResources.get('aws3d'), id: 'aws3d', image: IMAGE_PATH + '/sidebar-aws3d.png'},
             			          {title: 'Cloud & Enterprise', id: 'mscae', image: IMAGE_PATH + '/sidebar-mscae.png'},
             			          {title: mxResources.get('cisco'), id: 'cisco', image: IMAGE_PATH + '/sidebar-cisco.png'},
             			          {title: 'Cisco Safe', id: 'cisco_safe', image: IMAGE_PATH + '/sidebar-cisco_safe.png'},
@@ -788,10 +764,6 @@
 		this.addSitemapPalette();
 		this.addUmlPalette(false);
 		this.addAlliedTelesisPalette();
-		this.addAWS3Palette();
-		this.addAWS4bPalette();
-		this.addAWS4Palette();
-		this.addAWS3DPalette();
 		this.addMSCAEPalette();
 		
 		for (var i = 0; i < cisco.length; i++)
