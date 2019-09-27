@@ -403,7 +403,10 @@
 
 			   		// Works in Chrome, Firefox, Edge, Safari and Opera
 					var result = canvas.toDataURL('image/png');
-					EditorUi.prototype.useCanvasForExport = result != null && result.length > 6;
+					var canUseCanvas = result != null && result.length > 6
+					EditorUi.prototype.useCanvasForExport = canUseCanvas;
+					var w = window.opener || window.parent;
+					w.postMessage(JSON.stringify({event: 'canvas', canUseCanvas: canUseCanvas}), '*')
 				}
 				catch (e)
 				{
