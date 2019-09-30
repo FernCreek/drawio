@@ -43,11 +43,6 @@
                               'Driers', 'Engines', 'Feeders', 'Filters', 'Fittings', 'Flow Sensors', 'Heat Exchangers', 'Instruments', 'Misc',
                               'Mixers', 'Piping', 'Pumps', 'Pumps DIN', 'Pumps ISO', 'Separators', 'Shaping Machines', 'Valves', 'Vessels'];
 
-	Sidebar.prototype.cisco = ['Buildings', 'Computers and Peripherals', 'Controllers and Modules', 'Directors', 'Hubs and Gateways', 'Misc',
-	                           'Modems and Phones', 'People', 'Routers', 'Security', 'Servers', 'Storage', 'Switches', 'Wireless'];
-	
-	Sidebar.prototype.cisco_safe = ['Architecture', 'Capability', 'Design', 'Threat'];
-	
 	Sidebar.prototype.sysml = ['Model Elements', 'Blocks', 'Ports and Flows', 'Constraint Blocks', 'Activities', 'Interactions', 'State Machines', 
 	                           'Use Cases', 'Allocations', 'Requirements', 'Profiles', 'Stereotypes'];
 
@@ -87,8 +82,6 @@
            	                           {id: 'rack', prefix: 'rack', libs: Sidebar.prototype.rack},
            	                           {id: 'electrical', prefix: 'electrical', libs: Sidebar.prototype.electrical},
            	                           {id: 'pid', prefix: 'pid', libs: Sidebar.prototype.pids},
-           	                           {id: 'cisco', prefix: 'cisco', libs: Sidebar.prototype.cisco},
-           	                           {id: 'cisco_safe', prefix: 'cisco_safe', libs: Sidebar.prototype.cisco_safe},
            	                           {id: 'office', prefix: 'office', libs: Sidebar.prototype.office},
            	                           {id: 'cabinets', libs: ['cabinets']},
            	                           {id: 'floorplan', libs: ['floorplan']},
@@ -345,8 +338,6 @@
             			{title: mxResources.get('networking'),
             			entries: [
 			            			// TODO: Add isometric containers  		                          
-            			          {title: mxResources.get('cisco'), id: 'cisco', image: IMAGE_PATH + '/sidebar-cisco.png'},
-            			          {title: 'Cisco Safe', id: 'cisco_safe', image: IMAGE_PATH + '/sidebar-cisco_safe.png'},
 //            			          {title: 'Google Cloud Platform', id: 'gcp2', image: IMAGE_PATH + '/sidebar-gcp2.png'},
             			          {title: 'Google Cloud Platform', id: 'gcp2', image: IMAGE_PATH + '/sidebar-gcp2.png'},
             			          {title: 'Network', id: 'network', image: IMAGE_PATH + '/sidebar-network.png'},
@@ -514,8 +505,6 @@
 		var gcp = this.gcp;
 		var rack = this.rack;
 		var pids = this.pids;
-		var cisco = this.cisco;
-		var cisco_safe = this.cisco_safe;
 		var sysml = this.sysml;
 		var office = this.office;
 		
@@ -719,15 +708,6 @@
 		this.addMockupPalette();
 		this.addSitemapPalette();
 		this.addUmlPalette(false);
-		
-		for (var i = 0; i < cisco.length; i++)
-		{
-			this.addStencilPalette('cisco' + cisco[i], 'Cisco / ' + cisco[i],
-				dir + '/cisco/' + cisco[i].toLowerCase().replace(/ /g, '_') + '.xml',
-				';html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;', null, null, 1.6);
-		}
-
-		this.addCiscoSafePalette();
 //		this.addGCP2Palette();
 		this.addGCP2Palette();
 		this.addNetworkPalette();

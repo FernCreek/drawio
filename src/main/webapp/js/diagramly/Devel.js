@@ -33,7 +33,6 @@ mxscript(drawDevUrl + 'js/diagramly/sidebar/Sidebar-Arrows2.js');
 mxscript(drawDevUrl + 'js/diagramly/sidebar/Sidebar-Basic.js');
 mxscript(drawDevUrl + 'js/diagramly/sidebar/Sidebar-BPMN.js');
 mxscript(drawDevUrl + 'js/diagramly/sidebar/Sidebar-Cabinet.js');
-mxscript(drawDevUrl + 'js/diagramly/sidebar/Sidebar-CiscoSafe.js');
 mxscript(drawDevUrl + 'js/diagramly/sidebar/Sidebar-DFD.js');
 mxscript(drawDevUrl + 'js/diagramly/sidebar/Sidebar-Electrical.js');
 mxscript(drawDevUrl + 'js/diagramly/sidebar/Sidebar-ER.js');
