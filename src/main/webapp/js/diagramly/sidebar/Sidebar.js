@@ -96,7 +96,6 @@
            	                           {id: 'office', prefix: 'office', libs: Sidebar.prototype.office},
            	                           {id: 'cabinets', libs: ['cabinets']},
            	                           {id: 'floorplan', libs: ['floorplan']},
-           	                           {id: 'bootstrap', libs: ['bootstrap']},
 	                                   {id: 'gmdl', prefix: 'gmdl', libs: Sidebar.prototype.gmdl},
            	                           {id: 'webicons', libs: ['webicons', 'weblogos']},
            	                           {id: 'sysml', prefix: 'sysml', libs: Sidebar.prototype.sysml}];
@@ -344,7 +343,6 @@
             			          {title: mxResources.get('flowchart'), id: 'flowchart', image: IMAGE_PATH + '/sidebar-flowchart.png'}]},
             			{title: mxResources.get('software'),
             			entries: [{title: 'Active Directory', id: 'active_directory', image: IMAGE_PATH + '/sidebar-active_directory.png'},
-            			          {title: mxResources.get('bootstrap'), id: 'bootstrap', image: IMAGE_PATH + '/sidebar-bootstrap.png'},
             			          {title: 'Data Flow Diagram', id: 'dfd', image: IMAGE_PATH + '/sidebar-dfd.png'},
             			          {title: mxResources.get('entityRelation'), id: 'er', image: IMAGE_PATH + '/sidebar-er.png'},
             			          {title: mxResources.get('mockups'), id: 'mockups', image: IMAGE_PATH + '/sidebar-mockups.png'},
@@ -725,7 +723,6 @@
 
 		this.addFlowchartPalette();
 		this.addActiveDirectoryPalette();
-		this.addBootstrapPalette();
 		this.addDFDPalette();
 		this.addErPalette();
 		this.addMockupPalette();
