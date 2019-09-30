@@ -6416,7 +6416,7 @@
 				var graph = this.editor.graph;
 				
 				// Checks for embedded XML in PNG
-				if (text.substring(0, 22) == 'data:image/png;base64,')
+				if (text.substring(0, 22) == 'data:image/png;base64,' || data.substring(0, 23) == 'data:image/png;;base64,')
 				{
 					var xml = this.extractGraphModelFromPng(text);
 					var result = this.importXml(xml, dx, dy, crop, true); 
@@ -9050,7 +9050,7 @@
 									if (data != null)
 									{
 										// Checks for embedded XML in PNG
-										if (data.substring(0, 22) == 'data:image/png;base64,')
+										if (data.substring(0, 22) == 'data:image/png;base64,' || data.substring(0, 23) == 'data:image/png;;base64,')
 										{
 											var xml = this.extractGraphModelFromPng(data);
 											
@@ -9699,7 +9699,7 @@
 				{
 					try
 					{
-						if (data.substring(0, 22) == 'data:image/png;base64,')
+						if (data.substring(0, 22) == 'data:image/png;base64,' || data.substring(0, 23) == 'data:image/png;;base64,')
 						{
 							data = this.extractGraphModelFromPng(data);
 						}
