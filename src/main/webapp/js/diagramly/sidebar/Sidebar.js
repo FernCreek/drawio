@@ -51,9 +51,6 @@
 	Sidebar.prototype.sysml = ['Model Elements', 'Blocks', 'Ports and Flows', 'Constraint Blocks', 'Activities', 'Interactions', 'State Machines', 
 	                           'Use Cases', 'Allocations', 'Requirements', 'Profiles', 'Stereotypes'];
 
-	Sidebar.prototype.eip = ['Message Construction', 'Message Routing', 'Message Transformation', 'Messaging Channels', 'Messaging Endpoints', 
-	                         'Messaging Systems', 'System Management'];
-
 	Sidebar.prototype.gmdl = ['Bottom Navigation', 'Bottom Sheets', 'Buttons', 'Cards', 'Chips', 'Dialogs', 'Dividers', 'Grid Lists', 'Icons', 'Lists', 'Menus', 'Misc', 'Pickers', 
 	                          'Selection Controls', 'Sliders', 'Steppers', 'Tabs', 'Text Fields'];
 
@@ -85,7 +82,6 @@
 	                                   {id: 'active_directory'},
 	                                   {id: 'bpmn', prefix: 'bpmn', libs: [''/*prefix is library*/, 'Gateways', 'Events']},
 	                                   {id: 'clipart', prefix: null, libs: ['computer', 'finance', 'clipart', 'networking', 'people', 'telco']},
-	                                   {id: 'eip', prefix: 'eip', libs: Sidebar.prototype.eip},
 	                                   {id: 'mockups', prefix: 'mockup', libs: ['Buttons', 'Containers', 'Forms', 'Graphics', 'Markup', 'Misc', 'Navigation', 'Text']},
 	                                   {id: 'pid2', prefix: 'pid2', libs: ['Agitators', 'Apparatus Elements', 'Centrifuges', 'Compressors', 'Compressors ISO', 'Crushers Grinding', 
 	                                          	                          'Driers', 'Engines', 'Feeders', 'Filters', 'Fittings', 'Flow Sensors', 'Heat Exchangers', 'Instruments', 'Misc',
@@ -378,7 +374,6 @@
             			{title: mxResources.get('other'),
             			entries: [{title: mxResources.get('cabinets'), id: 'cabinets', image: IMAGE_PATH + '/sidebar-cabinets.png'},
             					  {title: 'Infographic', id: 'infographic', image: IMAGE_PATH + '/sidebar-infographic.png'},
-            			          {title: mxResources.get('eip'), id: 'eip', image: IMAGE_PATH + '/sidebar-eip.png'},
             			          {title: mxResources.get('electrical'), id: 'electrical', image: IMAGE_PATH + '/sidebar-electrical.png'},
             			          {title: mxResources.get('floorplans'), id: 'floorplan', image: IMAGE_PATH + '/sidebar-floorplans.png'},
             			          {title: mxResources.get('gmdl'), id: 'gmdl', image: IMAGE_PATH + '/sidebar-gmdl.png'},
@@ -537,7 +532,6 @@
 		var cisco = this.cisco;
 		var cisco_safe = this.cisco_safe;
 		var sysml = this.sysml;
-		var eip = this.eip;
 		var gmdl = this.gmdl;
 		var office = this.office;
 		
@@ -837,39 +831,6 @@
 
 		this.addCabinetsPalette();
 		this.addInfographicPalette();
-		
-		for (var i = 0; i < eip.length; i++)
-		{
-			if (eip[i] == 'Message Construction')
-			{
-				this.addEipMessageConstructionPalette();
-			}
-			else if (eip[i] == 'Message Routing')
-			{
-				this.addEipMessageRoutingPalette();
-			}
-			else if (eip[i] == 'Message Transformation')
-			{
-				this.addEipMessageTransformationPalette();
-			}
-			else if (eip[i] == 'Messaging Channels')
-			{
-				this.addEipMessagingChannelsPalette();
-			}
-			else if (eip[i] == 'Messaging Endpoints')
-			{
-				this.addEipMessagingEndpointsPalette();
-			}
-			else if (eip[i] == 'Messaging Systems')
-			{
-				this.addEipMessagingSystemsPalette();
-			}
-			else if (eip[i] == 'System Management')
-			{
-				this.addEipSystemManagementPalette();
-			}
-		}
-		
 		this.addElectricalPalette();
 		this.addFloorplanPalette();
 		
