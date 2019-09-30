@@ -65,7 +65,6 @@
            	                           {id: 'signs', prefix: 'signs', libs: Sidebar.prototype.signs},
            	                           {id: 'electrical', prefix: 'electrical', libs: Sidebar.prototype.electrical},
            	                           {id: 'pid', prefix: 'pid', libs: Sidebar.prototype.pids},
-           	                           {id: 'cabinets', libs: ['cabinets']},
            	                           {id: 'floorplan', libs: ['floorplan']},
            	                           {id: 'webicons', libs: ['webicons', 'weblogos']},
            	                           {id: 'sysml', prefix: 'sysml', libs: Sidebar.prototype.sysml}];
@@ -327,8 +326,7 @@
             			          {title: mxResources.get('leanMapping'), id: 'lean_mapping', image: IMAGE_PATH + '/sidebar-leanmapping.png'},
             			          {title: mxResources.get('sysml'), id: 'sysml', image: IMAGE_PATH + '/sidebar-sysml.png'}]},
             			{title: mxResources.get('other'),
-            			entries: [{title: mxResources.get('cabinets'), id: 'cabinets', image: IMAGE_PATH + '/sidebar-cabinets.png'},
-            					  {title: 'Infographic', id: 'infographic', image: IMAGE_PATH + '/sidebar-infographic.png'},
+            			entries: [{title: 'Infographic', id: 'infographic', image: IMAGE_PATH + '/sidebar-infographic.png'},
             			          {title: mxResources.get('electrical'), id: 'electrical', image: IMAGE_PATH + '/sidebar-electrical.png'},
             			          {title: mxResources.get('floorplans'), id: 'floorplan', image: IMAGE_PATH + '/sidebar-floorplans.png'},
             			          {title: mxResources.get('procEng'), id: 'pid', image: IMAGE_PATH + '/sidebar-pid.png'},
@@ -741,7 +739,6 @@
 			}
 		}
 
-		this.addCabinetsPalette();
 		this.addInfographicPalette();
 		this.addElectricalPalette();
 		this.addFloorplanPalette();
