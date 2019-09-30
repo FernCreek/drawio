@@ -247,12 +247,6 @@
 			urlParams['libs'].length > 0) ? decodeURIComponent(urlParams['libs']) : mxSettings.getLibraries());
 		var tmp = this.libs.split(';');
 		
-		// Maps library names via the alias table
-		for (var i = 0; i < tmp.length; i++)
-		{
-			tmp[i] = this.libAliases[tmp[i]] || tmp[i];
-		}
-		
 		for (var i = 0; i < this.configuration.length; i++)
 		{
 			// Search has separate switch in Extras menu
