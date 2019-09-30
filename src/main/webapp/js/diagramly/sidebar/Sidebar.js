@@ -19,11 +19,6 @@
 	Sidebar.prototype.gearImage = GRAPH_IMAGE_PATH + '/clipart/Gear_128x128.png';
 	
 	/**
-	 * Aliases for IDs in the libs parameter.
-	 */
-	Sidebar.prototype.libAliases = {'gcp' : 'gcp2'};
-	
-	/**
 	 * 
 	 */
 	Sidebar.prototype.defaultEntries = 'general;uml;er;bpmn;flowchart;basic;arrows2';
@@ -33,10 +28,6 @@
 	 */
 	Sidebar.prototype.signs = ['Animals', 'Food', 'Healthcare', 'Nature', 'People', 'Safety', 'Science', 'Sports', 'Tech', 'Transportation', 'Travel'];
 
-	Sidebar.prototype.gcp = ['Cards', 'Big Data', 'Compute', 'Developer Tools', 'Extras', 'Identity and Security', 'Machine Learning', 'Management Tools', 'Networking', 'Storage Databases'];
-	
-	Sidebar.prototype.gcp2 = ['Paths', 'Zones', 'Service Cards', 'Compute', 'API Platform and Ecosystems', 'Identity and Security', 'Big Data', 'Data Transfer', 'Cloud AI', 'Internet of Things', 'Storage and Databases', 'Management Tools', 'Networking', 'Developer Tools', 'Expanded Product Cards', 'User Device Cards', 'Product Cards', 'General Icons', 'Icons'];
-	
 	Sidebar.prototype.rack = ['General', 'APC', 'Cisco', 'Dell', 'F5', 'HP', 'IBM', 'Oracle'];
 
 	Sidebar.prototype.pids = ['Agitators', 'Apparatus Elements', 'Centrifuges', 'Compressors', 'Compressors ISO', 'Crushers Grinding', 
@@ -76,9 +67,6 @@
 	                                          	                          'Driers', 'Engines', 'Feeders', 'Filters', 'Fittings', 'Flow Sensors', 'Heat Exchangers', 'Instruments', 'Misc',
 	                                        	                          'Mixers', 'Piping', 'Pumps', 'Pumps DIN', 'Pumps ISO', 'Separators', 'Shaping Machines', 'Valves', 'Vessels']},
            	                           {id: 'signs', prefix: 'signs', libs: Sidebar.prototype.signs},
-           	                           {id: 'gcp', prefix: 'gcp', libs: Sidebar.prototype.gcp},
-           	                           {id: 'gcp2', prefix: 'gcp2', libs: Sidebar.prototype.gcp2},
-//           	                           {id: 'gcp19', prefix: 'gcp19', libs: Sidebar.prototype.gcp2},
            	                           {id: 'rack', prefix: 'rack', libs: Sidebar.prototype.rack},
            	                           {id: 'electrical', prefix: 'electrical', libs: Sidebar.prototype.electrical},
            	                           {id: 'pid', prefix: 'pid', libs: Sidebar.prototype.pids},
@@ -338,8 +326,6 @@
             			{title: mxResources.get('networking'),
             			entries: [
 			            			// TODO: Add isometric containers  		                          
-//            			          {title: 'Google Cloud Platform', id: 'gcp2', image: IMAGE_PATH + '/sidebar-gcp2.png'},
-            			          {title: 'Google Cloud Platform', id: 'gcp2', image: IMAGE_PATH + '/sidebar-gcp2.png'},
             			          {title: 'Network', id: 'network', image: IMAGE_PATH + '/sidebar-network.png'},
             			          {title: 'Office', id: 'office', image: IMAGE_PATH + '/sidebar-office.png'},
             			          {title: mxResources.get('rack'), id: 'rack', image: IMAGE_PATH + '/sidebar-rack.png'},
@@ -502,7 +488,6 @@
 		var imgDir = GRAPH_IMAGE_PATH;
 		var dir = STENCIL_PATH;
 		var signs = this.signs;
-		var gcp = this.gcp;
 		var rack = this.rack;
 		var pids = this.pids;
 		var sysml = this.sysml;
@@ -708,8 +693,6 @@
 		this.addMockupPalette();
 		this.addSitemapPalette();
 		this.addUmlPalette(false);
-//		this.addGCP2Palette();
-		this.addGCP2Palette();
 		this.addNetworkPalette();
 		this.addOfficePalette();
 		
