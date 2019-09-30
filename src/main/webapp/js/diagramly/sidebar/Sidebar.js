@@ -37,8 +37,6 @@
 	Sidebar.prototype.sysml = ['Model Elements', 'Blocks', 'Ports and Flows', 'Constraint Blocks', 'Activities', 'Interactions', 'State Machines', 
 	                           'Use Cases', 'Allocations', 'Requirements', 'Profiles', 'Stereotypes'];
 
-	Sidebar.prototype.office = ['Clouds', 'Communications', 'Concepts', 'Databases', 'Devices', 'Security', 'Servers', 'Services', 'Sites', 'Users'];
-
 	Sidebar.prototype.electrical = ['LogicGates', 'Resistors', 'Capacitors', 'Inductors', 'SwitchesRelays', 'Diodes', 'Sources', 'Transistors', 'Misc', 'Audio', 'PlcLadder', 'Abstract', 'Optical', 'VacuumTubes', 'Waveforms', 'Instruments', 'RotMech', 'Transmission'];
 
 	/**
@@ -70,7 +68,6 @@
            	                           {id: 'rack', prefix: 'rack', libs: Sidebar.prototype.rack},
            	                           {id: 'electrical', prefix: 'electrical', libs: Sidebar.prototype.electrical},
            	                           {id: 'pid', prefix: 'pid', libs: Sidebar.prototype.pids},
-           	                           {id: 'office', prefix: 'office', libs: Sidebar.prototype.office},
            	                           {id: 'cabinets', libs: ['cabinets']},
            	                           {id: 'floorplan', libs: ['floorplan']},
            	                           {id: 'webicons', libs: ['webicons', 'weblogos']},
@@ -327,7 +324,6 @@
             			entries: [
 			            			// TODO: Add isometric containers  		                          
             			          {title: 'Network', id: 'network', image: IMAGE_PATH + '/sidebar-network.png'},
-            			          {title: 'Office', id: 'office', image: IMAGE_PATH + '/sidebar-office.png'},
             			          {title: mxResources.get('rack'), id: 'rack', image: IMAGE_PATH + '/sidebar-rack.png'},
             			          {title: 'VMware', id: 'vvd', image: IMAGE_PATH + '/sidebar-vvd.png'}]},
             			{title: mxResources.get('business'),
@@ -491,7 +487,6 @@
 		var rack = this.rack;
 		var pids = this.pids;
 		var sysml = this.sysml;
-		var office = this.office;
 		
 		if (urlParams['createindex'] == '1')
 		{
@@ -694,7 +689,6 @@
 		this.addSitemapPalette();
 		this.addUmlPalette(false);
 		this.addNetworkPalette();
-		this.addOfficePalette();
 		
 		for (var i = 0; i < rack.length; i++)
 		{
