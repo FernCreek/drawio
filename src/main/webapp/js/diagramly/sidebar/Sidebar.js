@@ -51,9 +51,6 @@
 	Sidebar.prototype.sysml = ['Model Elements', 'Blocks', 'Ports and Flows', 'Constraint Blocks', 'Activities', 'Interactions', 'State Machines', 
 	                           'Use Cases', 'Allocations', 'Requirements', 'Profiles', 'Stereotypes'];
 
-	Sidebar.prototype.gmdl = ['Bottom Navigation', 'Bottom Sheets', 'Buttons', 'Cards', 'Chips', 'Dialogs', 'Dividers', 'Grid Lists', 'Icons', 'Lists', 'Menus', 'Misc', 'Pickers', 
-	                          'Selection Controls', 'Sliders', 'Steppers', 'Tabs', 'Text Fields'];
-
 	Sidebar.prototype.office = ['Clouds', 'Communications', 'Concepts', 'Databases', 'Devices', 'Security', 'Servers', 'Services', 'Sites', 'Users'];
 
 	Sidebar.prototype.electrical = ['LogicGates', 'Resistors', 'Capacitors', 'Inductors', 'SwitchesRelays', 'Diodes', 'Sources', 'Transistors', 'Misc', 'Audio', 'PlcLadder', 'Abstract', 'Optical', 'VacuumTubes', 'Waveforms', 'Instruments', 'RotMech', 'Transmission'];
@@ -96,7 +93,6 @@
            	                           {id: 'office', prefix: 'office', libs: Sidebar.prototype.office},
            	                           {id: 'cabinets', libs: ['cabinets']},
            	                           {id: 'floorplan', libs: ['floorplan']},
-	                                   {id: 'gmdl', prefix: 'gmdl', libs: Sidebar.prototype.gmdl},
            	                           {id: 'webicons', libs: ['webicons', 'weblogos']},
            	                           {id: 'sysml', prefix: 'sysml', libs: Sidebar.prototype.sysml}];
 	
@@ -368,7 +364,6 @@
             					  {title: 'Infographic', id: 'infographic', image: IMAGE_PATH + '/sidebar-infographic.png'},
             			          {title: mxResources.get('electrical'), id: 'electrical', image: IMAGE_PATH + '/sidebar-electrical.png'},
             			          {title: mxResources.get('floorplans'), id: 'floorplan', image: IMAGE_PATH + '/sidebar-floorplans.png'},
-            			          {title: mxResources.get('gmdl'), id: 'gmdl', image: IMAGE_PATH + '/sidebar-gmdl.png'},
             			          {title: mxResources.get('procEng'), id: 'pid', image: IMAGE_PATH + '/sidebar-pid.png'},
             			          // TODO add to mxResources
             			          {title: 'Web Icons', id: 'webicons', image: IMAGE_PATH + '/sidebar-webIcons.png'},
@@ -524,7 +519,6 @@
 		var cisco = this.cisco;
 		var cisco_safe = this.cisco_safe;
 		var sysml = this.sysml;
-		var gmdl = this.gmdl;
 		var office = this.office;
 		
 		if (urlParams['createindex'] == '1')
@@ -821,82 +815,6 @@
 		this.addElectricalPalette();
 		this.addFloorplanPalette();
 		
-		for (var i = 0; i < gmdl.length; i++)
-		{
-			if (gmdl[i] == 'Bottom Navigation')
-			{
-				this.addGMDLBottomNavigationPalette();
-			}
-			else if (gmdl[i] == 'Bottom Sheets')
-			{
-				this.addGMDLBottomSheetsPalette();
-			}
-			else if (gmdl[i] == 'Buttons')
-			{
-				this.addGMDLButtonsPalette();
-			}
-			else if (gmdl[i] == 'Cards')
-			{
-				this.addGMDLCardsPalette();
-			}
-			else if (gmdl[i] == 'Chips')
-			{
-				this.addGMDLChipsPalette();
-			}
-			else if (gmdl[i] == 'Dialogs')
-			{
-				this.addGMDLDialogsPalette();
-			}
-			else if (gmdl[i] == 'Dividers')
-			{
-				this.addGMDLDividersPalette();
-			}
-			else if (gmdl[i] == 'Grid Lists')
-			{
-				this.addGMDLGridListsPalette();
-			}
-			else if (gmdl[i] == 'Icons')
-			{
-				this.addGMDLIconsPalette();
-			}
-			else if (gmdl[i] == 'Lists')
-			{
-				this.addGMDLListsPalette();
-			}
-			else if (gmdl[i] == 'Menus')
-			{
-				this.addGMDLMenusPalette();
-			}
-			else if (gmdl[i] == 'Misc')
-			{
-				this.addGMDLMiscPalette();
-			}
-			else if (gmdl[i] == 'Pickers')
-			{
-				this.addGMDLPickersPalette();
-			}
-			else if (gmdl[i] == 'Selection Controls')
-			{
-				this.addGMDLSelectionControlsPalette();
-			}
-			else if (gmdl[i] == 'Sliders')
-			{
-				this.addGMDLSlidersPalette();
-			}
-			else if (gmdl[i] == 'Steppers')
-			{
-				this.addGMDLSteppersPalette();
-			}
-			else if (gmdl[i] == 'Tabs')
-			{
-				this.addGMDLTabsPalette();
-			}
-			else if (gmdl[i] == 'Text Fields')
-			{
-				this.addGMDLTextFieldsPalette();
-			}
-		}
-
 		for (var i = 0; i < pids.length; i++)
 		{
 			if (pids[i] == 'Instruments')
