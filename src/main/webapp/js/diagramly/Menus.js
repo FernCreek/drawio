@@ -1029,7 +1029,7 @@
 			else
 			{
 				editorUi.showDialog(new MoreShapesDialog(editorUi, false).container, 360, (isLocalStorage) ?
-						((mxClient.IS_IOS) ? 300 : 280) : 260, true, true);
+						((mxClient.IS_IOS) ? 300 : 280) : 175, true, true);
 			}
 		});
 
