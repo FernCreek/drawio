@@ -54,7 +54,7 @@
 	 *
 	 */
 	Sidebar.prototype.configuration = [{id: 'general', libs: ['general', 'misc', 'advanced']}, {id: 'uml'}, {id: 'search'}, {id: 'er'},
-	                                   {id: 'flowchart'}, {id: 'basic'}, {id: 'infographic'}, {id: 'arrows'}, {id: 'arrows2'}, {id: 'lean_mapping'}, {id: 'network'}, {id: 'vvd'}, 
+	                                   {id: 'flowchart'}, {id: 'basic'}, {id: 'infographic'}, {id: 'arrows'}, {id: 'arrows2'}, {id: 'lean_mapping'}, {id: 'network'},
 	                                   {id: 'dfd'},
 	                                   {id: 'bpmn', prefix: 'bpmn', libs: [''/*prefix is library*/, 'Gateways', 'Events']},
 	                                   {id: 'clipart', prefix: null, libs: ['computer', 'finance', 'clipart', 'networking', 'people', 'telco']},
@@ -318,7 +318,6 @@
             			entries: [
 			            			// TODO: Add isometric containers  		                          
             			          {title: 'Network', id: 'network', image: IMAGE_PATH + '/sidebar-network.png'},
-            			          {title: 'VMware', id: 'vvd', image: IMAGE_PATH + '/sidebar-vvd.png'}]},
             			{title: mxResources.get('business'),
             			entries: [{title: mxResources.get('bpmn'), id: 'bpmn', image: IMAGE_PATH + '/sidebar-bpmn.png'},
             			          {title: mxResources.get('leanMapping'), id: 'lean_mapping', image: IMAGE_PATH + '/sidebar-leanmapping.png'},
@@ -679,7 +678,6 @@
 		this.addUmlPalette(false);
 		this.addNetworkPalette();
 		
-		this.addVVDPalette();
 		this.addBpmnPalette(dir, false);
 		this.addLeanMappingPalette();
 		
