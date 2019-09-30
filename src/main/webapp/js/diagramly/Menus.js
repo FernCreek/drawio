@@ -2249,7 +2249,7 @@
 
 		this.put('file', new Menu(mxUtils.bind(this, function(menu, parent)
 		{
-				this.addMenuItems(menu, ['pageSetup', 'print'], parent);
+				this.addMenuItems(menu, ['pageSetup'], parent);
 		})));
 	};
 })();
