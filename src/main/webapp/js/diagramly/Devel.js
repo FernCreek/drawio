@@ -47,8 +47,6 @@ mxscript(drawDevUrl + 'js/diagramly/sidebar/Sidebar-GCP.js');
 mxscript(drawDevUrl + 'js/diagramly/sidebar/Sidebar-GCP2.js');
 mxscript(drawDevUrl + 'js/diagramly/sidebar/Sidebar-Gmdl.js');
 mxscript(drawDevUrl + 'js/diagramly/sidebar/Sidebar-Infographic.js');
-mxscript(drawDevUrl + 'js/diagramly/sidebar/Sidebar-Ios.js');
-mxscript(drawDevUrl + 'js/diagramly/sidebar/Sidebar-Ios7.js');
 mxscript(drawDevUrl + 'js/diagramly/sidebar/Sidebar-LeanMapping.js');
 mxscript(drawDevUrl + 'js/diagramly/sidebar/Sidebar-Mockup.js');
 mxscript(drawDevUrl + 'js/diagramly/sidebar/Sidebar-Network.js');
