@@ -66,7 +66,6 @@
            	                           {id: 'electrical', prefix: 'electrical', libs: Sidebar.prototype.electrical},
            	                           {id: 'pid', prefix: 'pid', libs: Sidebar.prototype.pids},
            	                           {id: 'floorplan', libs: ['floorplan']},
-           	                           {id: 'webicons', libs: ['webicons', 'weblogos']},
            	                           {id: 'sysml', prefix: 'sysml', libs: Sidebar.prototype.sysml}];
 	
 	/**
@@ -331,7 +330,6 @@
             			          {title: mxResources.get('floorplans'), id: 'floorplan', image: IMAGE_PATH + '/sidebar-floorplans.png'},
             			          {title: mxResources.get('procEng'), id: 'pid', image: IMAGE_PATH + '/sidebar-pid.png'},
             			          // TODO add to mxResources
-            			          {title: 'Web Icons', id: 'webicons', image: IMAGE_PATH + '/sidebar-webIcons.png'},
             			          {title: mxResources.get('signs'), id: 'signs', image: IMAGE_PATH + '/sidebar-signs.png'}]}];
 
 		// Uses search.xml index file instead (faster load times)
@@ -785,9 +783,6 @@
 			}
 		}
 		
-		this.addWebIconsPalette();
-		this.addWebLogosPalette();
-				
 		for (var i = 0; i < signs.length; i++)
 		{
 			this.addStencilPalette('signs' + signs[i], 'Signs / ' + signs[i],
