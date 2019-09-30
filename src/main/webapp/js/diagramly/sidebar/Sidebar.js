@@ -314,10 +314,8 @@
             			          {title: mxResources.get('entityRelation'), id: 'er', image: IMAGE_PATH + '/sidebar-er.png'},
             			          {title: mxResources.get('mockups'), id: 'mockups', image: IMAGE_PATH + '/sidebar-mockups.png'},
             			          {title: mxResources.get('uml'), id: 'uml', image: IMAGE_PATH + '/sidebar-uml.png'}]},
-            			{title: mxResources.get('networking'),
-            			entries: [
-			            			// TODO: Add isometric containers  		                          
-            			          {title: 'Network', id: 'network', image: IMAGE_PATH + '/sidebar-network.png'},
+									{title: mxResources.get('networking'),
+									entries: [{title: 'Network', id: 'network', image: IMAGE_PATH + '/sidebar-network.png'}]},
             			{title: mxResources.get('business'),
             			entries: [{title: mxResources.get('bpmn'), id: 'bpmn', image: IMAGE_PATH + '/sidebar-bpmn.png'},
             			          {title: mxResources.get('leanMapping'), id: 'lean_mapping', image: IMAGE_PATH + '/sidebar-leanmapping.png'},
