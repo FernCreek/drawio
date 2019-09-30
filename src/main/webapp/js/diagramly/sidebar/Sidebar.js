@@ -75,7 +75,6 @@
 	 *
 	 */
 	Sidebar.prototype.configuration = [{id: 'general', libs: ['general', 'misc', 'advanced']}, {id: 'uml'}, {id: 'search'}, {id: 'er'},
-	                                   {id: 'android', prefix: 'android', libs: [''/*prefix is library*/]},
 	                                   {id: 'flowchart'}, {id: 'basic'}, {id: 'infographic'}, {id: 'arrows'}, {id: 'arrows2'}, {id: 'lean_mapping'}, {id: 'network'}, {id: 'vvd'}, 
 	                                   {id: 'sitemap'}, {id: 'dfd'},
 	                                   {id: 'active_directory'},
@@ -346,7 +345,6 @@
             			          {title: mxResources.get('flowchart'), id: 'flowchart', image: IMAGE_PATH + '/sidebar-flowchart.png'}]},
             			{title: mxResources.get('software'),
             			entries: [{title: 'Active Directory', id: 'active_directory', image: IMAGE_PATH + '/sidebar-active_directory.png'},
-            					  {title: mxResources.get('android'), id: 'android', image: IMAGE_PATH + '/sidebar-android.png'},
             					  {title: 'Atlassian', id: 'atlassian', image: IMAGE_PATH + '/sidebar-atlassian.png'},
             			          {title: mxResources.get('bootstrap'), id: 'bootstrap', image: IMAGE_PATH + '/sidebar-bootstrap.png'},
             			          {title: 'Data Flow Diagram', id: 'dfd', image: IMAGE_PATH + '/sidebar-dfd.png'},
@@ -729,7 +727,6 @@
 
 		this.addFlowchartPalette();
 		this.addActiveDirectoryPalette();
-		this.addAndroidPalette();
 		this.addAtlassianPalette();
 		this.addBootstrapPalette();
 		this.addDFDPalette();
