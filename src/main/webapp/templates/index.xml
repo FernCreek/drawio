@@ -129,7 +129,6 @@
 <template url="network/arista.xml" libs="general" clibs="Uhttps%3A%2F%2Fjgraph.github.io%2Fdrawio-libs%2Flibs%2F%2Farista.xml"/>
 <template url="network/cisco_1.xml" libs="general;cisco"/>
 <template url="network/cisco_2.xml" libs="general;cisco"/>
-<template url="network/citrix.xml" libs="general;citrix"/>
 <template url="network/enterprise_1.xml" libs="general;citrix"/>
 <template url="network/fortinet.xml" libs="general" clibs="fortinet"/>
 <template url="network/internet.xml" libs="general;network"/>
