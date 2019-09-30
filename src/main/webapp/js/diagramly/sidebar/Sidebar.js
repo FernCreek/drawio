@@ -59,8 +59,6 @@
 
 	Sidebar.prototype.office = ['Clouds', 'Communications', 'Concepts', 'Databases', 'Devices', 'Security', 'Servers', 'Services', 'Sites', 'Users'];
 
-	Sidebar.prototype.archimate3 = ['Application', 'Business', 'Composite', 'Implementation and Migration', 'Motivation', 'Physical', 'Relationships', 'Strategy', 'Technology'];
-
 	Sidebar.prototype.electrical = ['LogicGates', 'Resistors', 'Capacitors', 'Inductors', 'SwitchesRelays', 'Diodes', 'Sources', 'Transistors', 'Misc', 'Audio', 'PlcLadder', 'Abstract', 'Optical', 'VacuumTubes', 'Waveforms', 'Instruments', 'RotMech', 'Transmission'];
 
 	/**
@@ -107,8 +105,6 @@
            	                           {id: 'bootstrap', libs: ['bootstrap']},
            	                           {id: 'atlassian', libs: ['atlassian']},
 	                                   {id: 'gmdl', prefix: 'gmdl', libs: Sidebar.prototype.gmdl},
-           	                           {id: 'archimate3', prefix: 'archimate3', libs: Sidebar.prototype.archimate3},
-           	                           {id: 'archimate', libs: ['archimate']},
            	                           {id: 'webicons', libs: ['webicons', 'weblogos']},
            	                           {id: 'sysml', prefix: 'sysml', libs: Sidebar.prototype.sysml}];
 	
@@ -376,9 +372,7 @@
             			          {title: mxResources.get('rack'), id: 'rack', image: IMAGE_PATH + '/sidebar-rack.png'},
             			          {title: 'VMware', id: 'vvd', image: IMAGE_PATH + '/sidebar-vvd.png'}]},
             			{title: mxResources.get('business'),
-            			entries: [{title: 'ArchiMate 3.0', id: 'archimate3', image: IMAGE_PATH + '/sidebar-archimate3.png'},
-            			          {title: mxResources.get('archiMate21'), id: 'archimate', image: IMAGE_PATH + '/sidebar-archimate.png'},
-            			          {title: mxResources.get('bpmn'), id: 'bpmn', image: IMAGE_PATH + '/sidebar-bpmn.png'},
+            			entries: [{title: mxResources.get('bpmn'), id: 'bpmn', image: IMAGE_PATH + '/sidebar-bpmn.png'},
             			          {title: mxResources.get('leanMapping'), id: 'lean_mapping', image: IMAGE_PATH + '/sidebar-leanmapping.png'},
             			          {title: mxResources.get('sysml'), id: 'sysml', image: IMAGE_PATH + '/sidebar-sysml.png'}]},
             			{title: mxResources.get('other'),
@@ -546,8 +540,6 @@
 		var eip = this.eip;
 		var gmdl = this.gmdl;
 		var office = this.office;
-		var archimate3 = this.archimate3;
-		var electrical = this.electrical;
 		
 		if (urlParams['createindex'] == '1')
 		{
@@ -788,8 +780,6 @@
 		}
 
 		this.addVVDPalette();
-		this.addArchimate3Palette();
-		this.addArchiMatePalette();
 		this.addBpmnPalette(dir, false);
 		this.addLeanMappingPalette();
 		
