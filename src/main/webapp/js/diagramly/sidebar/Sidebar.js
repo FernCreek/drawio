@@ -28,8 +28,6 @@
 	 */
 	Sidebar.prototype.signs = ['Animals', 'Food', 'Healthcare', 'Nature', 'People', 'Safety', 'Science', 'Sports', 'Tech', 'Transportation', 'Travel'];
 
-	Sidebar.prototype.rack = ['General', 'APC', 'Cisco', 'Dell', 'F5', 'HP', 'IBM', 'Oracle'];
-
 	Sidebar.prototype.pids = ['Agitators', 'Apparatus Elements', 'Centrifuges', 'Compressors', 'Compressors ISO', 'Crushers Grinding', 
                               'Driers', 'Engines', 'Feeders', 'Filters', 'Fittings', 'Flow Sensors', 'Heat Exchangers', 'Instruments', 'Misc',
                               'Mixers', 'Piping', 'Pumps', 'Pumps DIN', 'Pumps ISO', 'Separators', 'Shaping Machines', 'Valves', 'Vessels'];
@@ -65,7 +63,6 @@
 	                                          	                          'Driers', 'Engines', 'Feeders', 'Filters', 'Fittings', 'Flow Sensors', 'Heat Exchangers', 'Instruments', 'Misc',
 	                                        	                          'Mixers', 'Piping', 'Pumps', 'Pumps DIN', 'Pumps ISO', 'Separators', 'Shaping Machines', 'Valves', 'Vessels']},
            	                           {id: 'signs', prefix: 'signs', libs: Sidebar.prototype.signs},
-           	                           {id: 'rack', prefix: 'rack', libs: Sidebar.prototype.rack},
            	                           {id: 'electrical', prefix: 'electrical', libs: Sidebar.prototype.electrical},
            	                           {id: 'pid', prefix: 'pid', libs: Sidebar.prototype.pids},
            	                           {id: 'cabinets', libs: ['cabinets']},
@@ -324,7 +321,6 @@
             			entries: [
 			            			// TODO: Add isometric containers  		                          
             			          {title: 'Network', id: 'network', image: IMAGE_PATH + '/sidebar-network.png'},
-            			          {title: mxResources.get('rack'), id: 'rack', image: IMAGE_PATH + '/sidebar-rack.png'},
             			          {title: 'VMware', id: 'vvd', image: IMAGE_PATH + '/sidebar-vvd.png'}]},
             			{title: mxResources.get('business'),
             			entries: [{title: mxResources.get('bpmn'), id: 'bpmn', image: IMAGE_PATH + '/sidebar-bpmn.png'},
@@ -484,7 +480,6 @@
 		var imgDir = GRAPH_IMAGE_PATH;
 		var dir = STENCIL_PATH;
 		var signs = this.signs;
-		var rack = this.rack;
 		var pids = this.pids;
 		var sysml = this.sysml;
 		
@@ -690,24 +685,6 @@
 		this.addUmlPalette(false);
 		this.addNetworkPalette();
 		
-		for (var i = 0; i < rack.length; i++)
-		{
-			if (rack[i].toLowerCase() === 'general')
-			{
-				this.addRackGeneralPalette();
-			}
-			else if (rack[i].toLowerCase() === 'f5')
-			{
-				this.addRackF5Palette();
-			}
-			else
-			{
-				this.addStencilPalette('rack' + rack[i], 'Rack / ' + rack[i],
-					dir + '/rack/' + rack[i].toLowerCase() + '.xml',
-					';html=1;labelPosition=right;align=left;spacingLeft=15;dashed=0;shadow=0;fillColor=#ffffff;');
-			}
-		}
-
 		this.addVVDPalette();
 		this.addBpmnPalette(dir, false);
 		this.addLeanMappingPalette();
