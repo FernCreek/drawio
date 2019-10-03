@@ -10270,6 +10270,12 @@
 			else
 			{
 				data = extractDiagramXml(data);
+				if (!data)
+				{
+					// If there is no image data ensure the background is white.
+					// This ensures that exports have a nice background.
+					this.editor.graph.background = '#ffffff';
+				}
 				doLoad(data, evt);
 				if (!data && jsonData.xml)
 				{
