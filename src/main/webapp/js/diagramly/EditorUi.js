@@ -1649,7 +1649,7 @@
 				{
 					if (data.length <= MAX_REQUEST_SIZE)
 					{
-								this.saveData(filename, 'svg', data, 'image/svg+xml');
+						this.saveData(filename, 'svg', data, 'image/svg+xml');
 					}
 					else
 					{
@@ -1662,31 +1662,30 @@
 				
 				if (format == 'svg')
 				{
-						var bg = this.editor.graph.background;
-						
-						if (transparent || bg == mxConstants.NONE)
-						{
-							bg = null;
-						}
-	
-						// Sets or disables alternate text for foreignObjects. Disabling is needed
-						// because PhantomJS seems to ignore switch statements and paint all text.
-						var svgRoot = this.editor.graph.getSvg(bg, null, null, null, null, ignoreSelection);
-				
-				if (addShadow)
-				{
-					this.editor.graph.addSvgShadow(svgRoot);
-				}
-				
-				// Embeds the images in the SVG output (async)
-				this.convertImages(svgRoot, mxUtils.bind(this, mxUtils.bind(this, function(svgRoot2)
-				{
-					this.spinner.stop();
+					var bg = this.editor.graph.background;
 					
-					saveSvg('<?xml version="1.0" encoding="UTF-8"?>\n' +
-						'<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">\n' +
-						mxUtils.getXml(svgRoot2));
-				})));
+					if (transparent || bg == mxConstants.NONE)
+					{
+						bg = null;
+					}
+
+					// Sets or disables alternate text for foreignObjects. Disabling is needed
+					// because PhantomJS seems to ignore switch statements and paint all text.
+					var svgRoot = this.editor.graph.getSvg(bg, null, null, null, null, ignoreSelection);
+				
+					if (addShadow)
+					{
+						this.editor.graph.addSvgShadow(svgRoot);
+					}
+					
+					// Embeds the images in the SVG output (async)
+					this.convertImages(svgRoot, mxUtils.bind(this, mxUtils.bind(this, function(svgRoot2)
+					{
+						this.spinner.stop();
+						saveSvg('<?xml version="1.0" encoding="UTF-8"?>\n' +
+										'<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">\n' +
+										mxUtils.getXml(svgRoot2));
+					})));
 				}
 				else
 				{
