@@ -46,10 +46,16 @@ Create new release (use github for this)
 Once accepted you _may_ delete branch
 
 ## For upgrades
-Create new branch based on our master
+Rebase the current version (x.x.y) onto our master branch.
 
+Using rebase means there are new commits added to master, so when the merge from upstream happens, all of the changes we made are the most up-to-date, and we are less likely to loose changes.
+
+    git fetch alm-x.x.y
     git fetch origin/master
-    git checkout master 
+    git checkout master
+    git rebase alm-x.x.y
+    
+
 
 Ensure you have the upstream version locally
 
