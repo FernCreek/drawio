@@ -9861,6 +9861,10 @@
 				}
 				else if (data.action == 'export')
 				{
+					if (this.editor.graph.isEditing())
+					{
+						this.editor.graph.stopEditing(false); // Stop editing, and do not cancel any active changes.
+					}
 					if (data.format == 'png' || data.format == 'xmlpng')
 					{
 						if ((data.spin == null && data.spinKey == null) || this.spinner.spin(document.body,
