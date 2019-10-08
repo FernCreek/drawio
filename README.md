@@ -50,7 +50,7 @@ Rebase the current version (x.x.y) onto our master branch.
 
 Using rebase means there are new commits added to master, so when the merge from upstream happens, all of the changes we made are the most up-to-date, and we are less likely to loose changes.
 
-    git fetch alm-x.x.y
+    git fetch origin/alm-x.x.y
     git fetch origin/master
     git checkout master
     git rebase alm-x.x.y
