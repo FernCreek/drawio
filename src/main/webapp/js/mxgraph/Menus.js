@@ -1244,7 +1244,14 @@ Menubar.prototype.addMenuHandler = function(elt, funct)
 				});
 
 				var offset = mxUtils.getOffset(elt);
+				menu.table.style.marginRight = '15px'; // Always have a margin for the scrollbar
 				menu.popup(offset.x, offset.y + elt.offsetHeight, null, evt);
+				if (menu.div.offsetHeight >= menu.table.offsetHeight)
+				{
+					// If there is no scrollbar attempt to hide the margin.
+					// It's better to have extra margin rather than a scrollbar cutting off content.
+					menu.table.style.marginRight = '0px';
+				}
 				this.editorUi.setCurrentMenu(menu, elt);
 			}
 			
