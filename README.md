@@ -26,7 +26,7 @@ Ensure alm-x.x.x is up to date locally
 
     git fetch origin/alm-x.x.x
 
-Create new branch based on our master
+Create new branch based on our default branch
 
     git checkout -b alm-<new feature name> alm-x.x.x 
 
