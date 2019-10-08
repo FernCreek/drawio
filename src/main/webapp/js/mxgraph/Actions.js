@@ -65,7 +65,6 @@ Actions.prototype.init = function()
 	}).isEnabled = isGraphEnabled;
 	this.addAction('save', function() { ui.saveFile(false); }, null, null, Editor.ctrlKey + '+S').isEnabled = isGraphEnabled;
 	this.addAction('saveAs...', function() { ui.saveFile(true); }, null, null, Editor.ctrlKey + '+Shift+S').isEnabled = isGraphEnabled;
-	this.addAction('export...', function() { ui.showDialog(new ExportDialog(ui).container, 300, 296, true, true); });
 	this.addAction('editDiagram...', function()
 	{
 		var dlg = new EditDiagramDialog(ui);
@@ -829,21 +828,6 @@ Actions.prototype.init = function()
 		
 		graph.openLink(RESOURCES_PATH + '/help' + ext + '.html');
 	});
-	
-	var showingAbout = false;
-	
-	this.put('about', new Action(mxResources.get('about') + ' Graph Editor...', function()
-	{
-		if (!showingAbout)
-		{
-			ui.showDialog(new AboutDialog(ui).container, 320, 280, true, true, function()
-			{
-				showingAbout = false;
-			});
-			
-			showingAbout = true;
-		}
-	}, null, null, 'F1'));
 	
 	// Font style actions
 	var toggleFontStyle = mxUtils.bind(this, function(key, style, fn, shortcut)

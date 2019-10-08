@@ -9,7 +9,7 @@
 		var s2 = mxConstants.STYLE_VERTICAL_LABEL_POSITION + '=center;html=1;' + mxConstants.STYLE_VERTICAL_ALIGN + '=top;align=center;shape=mxgraph.floorplan.';
 		var gn = 'mxgraph.floorplan';
 		var dt = 'floorplan ';
-
+		var sb = this;
 		var fns =
 			[
 			this.createVertexTemplateEntry(s + 'wall;fillColor=#000000;', 

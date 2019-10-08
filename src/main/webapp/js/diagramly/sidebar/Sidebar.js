@@ -19,11 +19,6 @@
 	Sidebar.prototype.gearImage = GRAPH_IMAGE_PATH + '/clipart/Gear_128x128.png';
 	
 	/**
-	 * Aliases for IDs in the libs parameter.
-	 */
-	Sidebar.prototype.libAliases = {'aws2': 'aws3', 'gcp' : 'gcp2'};
-	
-	/**
 	 * 
 	 */
 	Sidebar.prototype.defaultEntries = 'general;uml;er;bpmn;flowchart;basic;arrows2';
@@ -33,55 +28,12 @@
 	 */
 	Sidebar.prototype.signs = ['Animals', 'Food', 'Healthcare', 'Nature', 'People', 'Safety', 'Science', 'Sports', 'Tech', 'Transportation', 'Travel'];
 
-	Sidebar.prototype.ibm = ['Analytics', 'Applications', 'Blockchain', 'Data', 'DevOps', 'Infrastructure', 'Management', 'Miscellaneous', 'Security', 'Social', 'Users', 'VPC'];
-
-	Sidebar.prototype.allied_telesis = ['Buildings', 'Computer and Terminals', 'Media Converters', 'Security', 'Storage', 'Switch', 'Wireless'];
-
-	Sidebar.prototype.gcp = ['Cards', 'Big Data', 'Compute', 'Developer Tools', 'Extras', 'Identity and Security', 'Machine Learning', 'Management Tools', 'Networking', 'Storage Databases'];
-	
-	Sidebar.prototype.gcp2 = ['Paths', 'Zones', 'Service Cards', 'Compute', 'API Platform and Ecosystems', 'Identity and Security', 'Big Data', 'Data Transfer', 'Cloud AI', 'Internet of Things', 'Storage and Databases', 'Management Tools', 'Networking', 'Developer Tools', 'Expanded Product Cards', 'User Device Cards', 'Product Cards', 'General Icons', 'Icons'];
-	
-	Sidebar.prototype.rack = ['General', 'APC', 'Cisco', 'Dell', 'F5', 'HP', 'IBM', 'Oracle'];
-
 	Sidebar.prototype.pids = ['Agitators', 'Apparatus Elements', 'Centrifuges', 'Compressors', 'Compressors ISO', 'Crushers Grinding', 
                               'Driers', 'Engines', 'Feeders', 'Filters', 'Fittings', 'Flow Sensors', 'Heat Exchangers', 'Instruments', 'Misc',
                               'Mixers', 'Piping', 'Pumps', 'Pumps DIN', 'Pumps ISO', 'Separators', 'Shaping Machines', 'Valves', 'Vessels'];
 
-	Sidebar.prototype.cisco = ['Buildings', 'Computers and Peripherals', 'Controllers and Modules', 'Directors', 'Hubs and Gateways', 'Misc',
-	                           'Modems and Phones', 'People', 'Routers', 'Security', 'Servers', 'Storage', 'Switches', 'Wireless'];
-	
-	Sidebar.prototype.cisco_safe = ['Architecture', 'Capability', 'Design', 'Threat'];
-	
 	Sidebar.prototype.sysml = ['Model Elements', 'Blocks', 'Ports and Flows', 'Constraint Blocks', 'Activities', 'Interactions', 'State Machines', 
 	                           'Use Cases', 'Allocations', 'Requirements', 'Profiles', 'Stereotypes'];
-
-	Sidebar.prototype.eip = ['Message Construction', 'Message Routing', 'Message Transformation', 'Messaging Channels', 'Messaging Endpoints', 
-	                         'Messaging Systems', 'System Management'];
-
-	Sidebar.prototype.gmdl = ['Bottom Navigation', 'Bottom Sheets', 'Buttons', 'Cards', 'Chips', 'Dialogs', 'Dividers', 'Grid Lists', 'Icons', 'Lists', 'Menus', 'Misc', 'Pickers', 
-	                          'Selection Controls', 'Sliders', 'Steppers', 'Tabs', 'Text Fields'];
-
-	Sidebar.prototype.aws2 = ['Analytics', 'Application Services', 'Compute', 'Database', 'Developer Tools', 'Enterprise Applications', 'Game Development', 'General', 'Internet of Things',  
-	                          'Management Tools', 'Mobile Services', 'Networking', 'On-Demand Workforce', 'SDKs', 'Security and Identity', 'Storage and Content Delivery', 'Groups'];
-
-	Sidebar.prototype.aws3 = ['Analytics', 'Application Services', 'Artificial Intelligence', 'Business Productivity', 'Compute', 'Contact Center', 'Database', 'Desktop and App Streaming', 'Developer Tools', 
-	                          'Game Development', 'General', 'Groups', 'Internet of Things',  
-	                          'Management Tools', 'Messaging', 'Migration', 'Mobile Services', 'Networking and Content Delivery', 'On Demand Workforce', 'SDKs', 'Security Identity and Compliance', 'Storage'];
-	
-	Sidebar.prototype.aws4b = ['Arrows', 'General Resources', 'Illustrations', 'Groups Light', 'Groups Dark', 'Analytics', 'Application Integration', 'AR VR', 'Cost Management', 'Business Productivity', 'Compute', 'Customer Engagement',
-							  'Database', 'Desktop App Streaming', 'Developer Tools', 'Game Development', 'Internet of Things', 'IoT Things', 'IoT Resources', 'Machine Learning', 'Management Tools',
-							  'Media Services', 'Migration', 'Mobile Services', 'Network Content Delivery', 'Security Identity Compliance', 'Storage'];
-	
-	Sidebar.prototype.aws4 = ['Arrows', 'General Resources', 'Illustrations', 'Groups', 'Analytics', 'Application Integration', 'AR VR', 'Cost Management', 'Blockchain', 
-							  'Business Applications', 'EC2 Instance Types', 'Compute', 'Customer Engagement',
-							  'Database', 'End User Computing', 'Developer Tools', 'Game Tech', 'Internet of Things', 'IoT Things', 'IoT Resources', 'Machine Learning', 'Management Governance',
-							  'Media Services', 'Migration Transfer', 'Mobile', 'Network Content Delivery', 'Robotics', 'Satellite', 'Security Identity Compliance', 'Storage'];
-
-	Sidebar.prototype.office = ['Clouds', 'Communications', 'Concepts', 'Databases', 'Devices', 'Security', 'Servers', 'Services', 'Sites', 'Users'];
-
-	Sidebar.prototype.veeam = ['Data Center', 'Misc', 'Software', 'Storage', 'UsersStatus', 'VASComponents', 'Backup Replication', 'Products', 'VMs and Tape', '2D', '3D'];
-
-	Sidebar.prototype.archimate3 = ['Application', 'Business', 'Composite', 'Implementation and Migration', 'Motivation', 'Physical', 'Relationships', 'Strategy', 'Technology'];
 
 	Sidebar.prototype.electrical = ['LogicGates', 'Resistors', 'Capacitors', 'Inductors', 'SwitchesRelays', 'Diodes', 'Sources', 'Transistors', 'Misc', 'Audio', 'PlcLadder', 'Abstract', 'Optical', 'VacuumTubes', 'Waveforms', 'Instruments', 'RotMech', 'Transmission'];
 
@@ -102,45 +54,18 @@
 	 *
 	 */
 	Sidebar.prototype.configuration = [{id: 'general', libs: ['general', 'misc', 'advanced']}, {id: 'uml'}, {id: 'search'}, {id: 'er'},
-	                                   {id: 'ios', prefix: 'ios', libs: [''/*prefix is library*/, '7icons', '7ui']}, 
-	                                   {id: 'android', prefix: 'android', libs: [''/*prefix is library*/]}, {id: 'aws3d'},
-	                                   {id: 'flowchart'}, {id: 'basic'}, {id: 'infographic'}, {id: 'arrows'}, {id: 'arrows2'}, {id: 'lean_mapping'}, {id: 'citrix'}, {id: 'azure'}, {id: 'network'}, {id: 'vvd'}, 
-	                                   {id: 'sitemap'}, {id: 'dfd'},
-	                                   {id: 'mscae', prefix: 'mscae', libs: ['Companies', 'EnterpriseFlat', 'Cloud', 'Enterprise', 'General', 'General Symbols', 'Intune', 'OMS', 'OpsManager', 'Other', 'System Center', 'Virtual Machine', 'Deprecated', 'Cloud Color', 'Deprecated Color']},
-	                                   {id: 'active_directory'},
+	                                   {id: 'flowchart'}, {id: 'basic'}, {id: 'infographic'}, {id: 'arrows'}, {id: 'arrows2'}, {id: 'lean_mapping'}, {id: 'network'},
+	                                   {id: 'dfd'},
 	                                   {id: 'bpmn', prefix: 'bpmn', libs: [''/*prefix is library*/, 'Gateways', 'Events']},
 	                                   {id: 'clipart', prefix: null, libs: ['computer', 'finance', 'clipart', 'networking', 'people', 'telco']},
-	                                   {id: 'ibm', prefix: 'ibm', libs: Sidebar.prototype.ibm},
-	                                   {id: 'allied_telesis', prefix: 'allied_telesis', libs: Sidebar.prototype.allied_telesis},
-	                                   {id: 'cumulus', libs: ['cumulus']},
-	                                   {id: 'eip', prefix: 'eip', libs: Sidebar.prototype.eip},
 	                                   {id: 'mockups', prefix: 'mockup', libs: ['Buttons', 'Containers', 'Forms', 'Graphics', 'Markup', 'Misc', 'Navigation', 'Text']},
 	                                   {id: 'pid2', prefix: 'pid2', libs: ['Agitators', 'Apparatus Elements', 'Centrifuges', 'Compressors', 'Compressors ISO', 'Crushers Grinding', 
 	                                          	                          'Driers', 'Engines', 'Feeders', 'Filters', 'Fittings', 'Flow Sensors', 'Heat Exchangers', 'Instruments', 'Misc',
 	                                        	                          'Mixers', 'Piping', 'Pumps', 'Pumps DIN', 'Pumps ISO', 'Separators', 'Shaping Machines', 'Valves', 'Vessels']},
            	                           {id: 'signs', prefix: 'signs', libs: Sidebar.prototype.signs},
-           	                           {id: 'gcp', prefix: 'gcp', libs: Sidebar.prototype.gcp},
-           	                           {id: 'gcp2', prefix: 'gcp2', libs: Sidebar.prototype.gcp2},
-//           	                           {id: 'gcp19', prefix: 'gcp19', libs: Sidebar.prototype.gcp2},
-           	                           {id: 'rack', prefix: 'rack', libs: Sidebar.prototype.rack},
            	                           {id: 'electrical', prefix: 'electrical', libs: Sidebar.prototype.electrical},
-           	                           {id: 'aws2', prefix: 'aws2', libs: Sidebar.prototype.aws2},
-           	                           {id: 'aws3', prefix: 'aws3', libs: Sidebar.prototype.aws3},
-           	                           {id: 'aws4b', prefix: 'aws4b', libs: Sidebar.prototype.aws4b},
-           	                           {id: 'aws4', prefix: 'aws4', libs: Sidebar.prototype.aws4},
            	                           {id: 'pid', prefix: 'pid', libs: Sidebar.prototype.pids},
-           	                           {id: 'cisco', prefix: 'cisco', libs: Sidebar.prototype.cisco},
-           	                           {id: 'cisco_safe', prefix: 'cisco_safe', libs: Sidebar.prototype.cisco_safe},
-           	                           {id: 'office', prefix: 'office', libs: Sidebar.prototype.office},
-           	                           {id: 'veeam', prefix: 'veeam', libs: Sidebar.prototype.veeam},
-           	                           {id: 'cabinets', libs: ['cabinets']},
            	                           {id: 'floorplan', libs: ['floorplan']},
-           	                           {id: 'bootstrap', libs: ['bootstrap']},
-           	                           {id: 'atlassian', libs: ['atlassian']},
-	                                   {id: 'gmdl', prefix: 'gmdl', libs: Sidebar.prototype.gmdl},
-           	                           {id: 'archimate3', prefix: 'archimate3', libs: Sidebar.prototype.archimate3},
-           	                           {id: 'archimate', libs: ['archimate']},
-           	                           {id: 'webicons', libs: ['webicons', 'weblogos']},
            	                           {id: 'sysml', prefix: 'sysml', libs: Sidebar.prototype.sysml}];
 	
 	/**
@@ -322,12 +247,6 @@
 			urlParams['libs'].length > 0) ? decodeURIComponent(urlParams['libs']) : mxSettings.getLibraries());
 		var tmp = this.libs.split(';');
 		
-		// Maps library names via the alias table
-		for (var i = 0; i < tmp.length; i++)
-		{
-			tmp[i] = this.libAliases[tmp[i]] || tmp[i];
-		}
-		
 		for (var i = 0; i < this.configuration.length; i++)
 		{
 			// Search has separate switch in Extras menu
@@ -385,53 +304,22 @@
             			          {title: mxResources.get('clipart'), id: 'clipart', image: IMAGE_PATH + '/sidebar-clipart.png'},
             			          {title: mxResources.get('flowchart'), id: 'flowchart', image: IMAGE_PATH + '/sidebar-flowchart.png'}]},
             			{title: mxResources.get('software'),
-            			entries: [{title: 'Active Directory', id: 'active_directory', image: IMAGE_PATH + '/sidebar-active_directory.png'},
-            					  {title: mxResources.get('android'), id: 'android', image: IMAGE_PATH + '/sidebar-android.png'},
-            					  {title: 'Atlassian', id: 'atlassian', image: IMAGE_PATH + '/sidebar-atlassian.png'},
-            			          {title: mxResources.get('bootstrap'), id: 'bootstrap', image: IMAGE_PATH + '/sidebar-bootstrap.png'},
-            			          {title: 'Data Flow Diagram', id: 'dfd', image: IMAGE_PATH + '/sidebar-dfd.png'},
+            			entries: [{title: 'Data Flow Diagram', id: 'dfd', image: IMAGE_PATH + '/sidebar-dfd.png'},
             			          {title: mxResources.get('entityRelation'), id: 'er', image: IMAGE_PATH + '/sidebar-er.png'},
-            			          {title: mxResources.get('ios'), id: 'ios', image: IMAGE_PATH + '/sidebar-ios.png'},
             			          {title: mxResources.get('mockups'), id: 'mockups', image: IMAGE_PATH + '/sidebar-mockups.png'},
-            			          {title: 'Sitemap', id: 'sitemap', image: IMAGE_PATH + '/sidebar-sitemap.png'},
             			          {title: mxResources.get('uml'), id: 'uml', image: IMAGE_PATH + '/sidebar-uml.png'}]},
-            			{title: mxResources.get('networking'),
-            			entries: [{title: 'Allied Telesis', id: 'allied_telesis', image: IMAGE_PATH + '/sidebar-allied_telesis.png'},
-            					  {title: 'AWS17', id: 'aws3', image: IMAGE_PATH + '/sidebar-aws3.png'},
-							      {title: 'AWS18', id: 'aws4b', image: IMAGE_PATH + '/sidebar-aws4.png'},
-							      {title: 'AWS19', id: 'aws4', image: IMAGE_PATH + '/sidebar-aws4.png'},
-			            			// TODO: Add isometric containers  		                          
-            			          {title: mxResources.get('aws3d'), id: 'aws3d', image: IMAGE_PATH + '/sidebar-aws3d.png'},
-            			          {title: mxResources.get('azure'), id: 'azure', image: IMAGE_PATH + '/sidebar-azure.png'},
-            			          {title: 'Cloud & Enterprise', id: 'mscae', image: IMAGE_PATH + '/sidebar-mscae.png'},
-            			          {title: mxResources.get('cisco'), id: 'cisco', image: IMAGE_PATH + '/sidebar-cisco.png'},
-            			          {title: 'Cisco Safe', id: 'cisco_safe', image: IMAGE_PATH + '/sidebar-cisco_safe.png'},
-            			          {title: 'Cumulus', id: 'cumulus', image: IMAGE_PATH + '/sidebar-cumulus.png'},
-            			          {title: 'Citrix', id: 'citrix', image: IMAGE_PATH + '/sidebar-citrix.png'},
-//            			          {title: 'Google Cloud Platform', id: 'gcp2', image: IMAGE_PATH + '/sidebar-gcp2.png'},
-            			          {title: 'Google Cloud Platform', id: 'gcp2', image: IMAGE_PATH + '/sidebar-gcp2.png'},
-            			          {title: 'IBM', id: 'ibm', image: IMAGE_PATH + '/sidebar-ibm.png'},
-            			          {title: 'Network', id: 'network', image: IMAGE_PATH + '/sidebar-network.png'},
-            			          {title: 'Office', id: 'office', image: IMAGE_PATH + '/sidebar-office.png'},
-            			          {title: mxResources.get('rack'), id: 'rack', image: IMAGE_PATH + '/sidebar-rack.png'},
-            			          {title: 'Veeam', id: 'veeam', image: IMAGE_PATH + '/sidebar-veeam.png'},
-            			          {title: 'VMware', id: 'vvd', image: IMAGE_PATH + '/sidebar-vvd.png'}]},
+									{title: mxResources.get('networking'),
+									entries: [{title: 'Network', id: 'network', image: IMAGE_PATH + '/sidebar-network.png'}]},
             			{title: mxResources.get('business'),
-            			entries: [{title: 'ArchiMate 3.0', id: 'archimate3', image: IMAGE_PATH + '/sidebar-archimate3.png'},
-            			          {title: mxResources.get('archiMate21'), id: 'archimate', image: IMAGE_PATH + '/sidebar-archimate.png'},
-            			          {title: mxResources.get('bpmn'), id: 'bpmn', image: IMAGE_PATH + '/sidebar-bpmn.png'},
+            			entries: [{title: mxResources.get('bpmn'), id: 'bpmn', image: IMAGE_PATH + '/sidebar-bpmn.png'},
             			          {title: mxResources.get('leanMapping'), id: 'lean_mapping', image: IMAGE_PATH + '/sidebar-leanmapping.png'},
             			          {title: mxResources.get('sysml'), id: 'sysml', image: IMAGE_PATH + '/sidebar-sysml.png'}]},
             			{title: mxResources.get('other'),
-            			entries: [{title: mxResources.get('cabinets'), id: 'cabinets', image: IMAGE_PATH + '/sidebar-cabinets.png'},
-            					  {title: 'Infographic', id: 'infographic', image: IMAGE_PATH + '/sidebar-infographic.png'},
-            			          {title: mxResources.get('eip'), id: 'eip', image: IMAGE_PATH + '/sidebar-eip.png'},
+            			entries: [{title: 'Infographic', id: 'infographic', image: IMAGE_PATH + '/sidebar-infographic.png'},
             			          {title: mxResources.get('electrical'), id: 'electrical', image: IMAGE_PATH + '/sidebar-electrical.png'},
             			          {title: mxResources.get('floorplans'), id: 'floorplan', image: IMAGE_PATH + '/sidebar-floorplans.png'},
-            			          {title: mxResources.get('gmdl'), id: 'gmdl', image: IMAGE_PATH + '/sidebar-gmdl.png'},
             			          {title: mxResources.get('procEng'), id: 'pid', image: IMAGE_PATH + '/sidebar-pid.png'},
             			          // TODO add to mxResources
-            			          {title: 'Web Icons', id: 'webicons', image: IMAGE_PATH + '/sidebar-webIcons.png'},
             			          {title: mxResources.get('signs'), id: 'signs', image: IMAGE_PATH + '/sidebar-signs.png'}]}];
 
 		// Uses search.xml index file instead (faster load times)
@@ -449,132 +337,7 @@
 		
 		this.initPalettes();
 	}
-	
-	/**
-	 * Overridden to add image export via servlet
-	 */
-	if (urlParams['savesidebar'] == '1')
-	{
-		Sidebar.prototype.addFoldingHandler = function(title, content, funct)
-		{
-			var initialized = false;
-	
-			// Avoids mixed content warning in IE6-8
-			if (!mxClient.IS_IE || document.documentMode >= 8)
-			{
-				title.style.backgroundImage = (content.style.display == 'none') ?
-					'url(\'' + this.collapsedImage + '\')' : 'url(\'' + this.expandedImage + '\')';
-			}
-			
-			title.style.backgroundRepeat = 'no-repeat';
-			title.style.backgroundPosition = '0% 50%';
-	
-			var btn = document.createElement('button');
-			btn.style.marginLeft = '4px';
-			mxUtils.write(btn, 'Save');
-			
-			mxEvent.addListener(title, 'click', mxUtils.bind(this, function(evt)
-			{
-				if (mxEvent.getSource(evt).nodeName == 'BUTTON')
-				{
-					var title2 = title.cloneNode(true);
-					title2.style.backgroundImage = '';
-					title2.style.textDecoration = 'none';
-					title2.style.fontWeight = 'bold';
-					title2.style.fontSize = '14px';
-					title2.style.color = 'rgb(80, 80, 80)';
-					title2.style.width = '456px';
-					title2.style.backgroundColor = '#ffffff';
-					title2.style.paddingLeft = '6px';
-					
-					var btn2 = title2.getElementsByTagName('button')[0];
-					btn2.parentNode.removeChild(btn2);
-					
-					var clone = content.cloneNode(true);
-					clone.style.backgroundColor = '#ffffff';
-					clone.style.borderColor = 'transparent';
-					clone.style.width = '456px';
-	
-					var parser = new DOMParser();
-					var doc = parser.parseFromString('<body style="background:#ffffff;font-family:Helvetica,Arial;">' +
-							title2.outerHTML + clone.outerHTML + '</body>', 'text/html');
-					
-					this.editorUi.convertImages(doc.documentElement, mxUtils.bind(this, function(body)
-					{
-						var html = '<!DOCTYPE html><html><head><link rel="stylesheet" type="text/css" ' +
-							'href="https://www.draw.io/styles/grapheditor.css"></head>' +
-							mxUtils.getXml(body) + '</html>';
-		
-						clone.style.position = 'absolute';
-						window.document.body.appendChild(clone);
-						var h = clone.clientHeight + 18;
-						clone.parentNode.removeChild(clone);
-						
-						this.editorUi.confirm('Image data created', mxUtils.bind(this, function()
-						{
-				    		new mxXmlRequest(EXPORT_URL, 'w=456&h=' + h + '&html=' + encodeURIComponent(
-				    			Graph.compress(html))).simulate(document, '_blank');
-						}), null, mxResources.get('save'), mxResources.get('cancel'));
-					}));
-					
-					return;
-				}
-				
-				if (content.style.display == 'none')
-				{
-					if (!initialized)
-					{
-						initialized = true;
-						
-						if (funct != null)
-						{
-							if (btn.parentNode != null)
-							{
-								btn.parentNode.removeChild(btn);
-							}
-							
-							// Wait cursor does not show up on Mac
-							title.style.cursor = 'wait';
-							var prev = title.innerHTML;
-							title.innerHTML = mxResources.get('loading') + '...';
-							
-							window.setTimeout(function()
-							{
-								funct(content);
-								title.style.cursor = '';
-								title.innerHTML = prev;
-								title.appendChild(btn);
-							}, 0);
-						}
-						else
-						{
-							title.appendChild(btn);
-						}
-					}
-					else
-					{
-						title.appendChild(btn);
-					}
-					
-					title.style.backgroundImage = 'url(\'' + this.expandedImage + '\')';
-					content.style.display = 'block';
-				}
-				else
-				{
-					title.style.backgroundImage = 'url(\'' + this.collapsedImage + '\')';
-					content.style.display = 'none';
-					
-					if (btn.parentNode != null)
-					{
-						btn.parentNode.removeChild(btn);
-					}
-				}
-				
-				mxEvent.consume(evt);
-			}));
-		};
-	}
-	
+
 	/**
 	 * Overridden to use shapetags to improve search results.
 	 */
@@ -703,18 +466,8 @@
 		var imgDir = GRAPH_IMAGE_PATH;
 		var dir = STENCIL_PATH;
 		var signs = this.signs;
-		var gcp = this.gcp;
-		var rack = this.rack;
 		var pids = this.pids;
-		var cisco = this.cisco;
-		var cisco_safe = this.cisco_safe;
 		var sysml = this.sysml;
-		var eip = this.eip;
-		var gmdl = this.gmdl;
-		var office = this.office;
-		var veeam = this.veeam;
-		var archimate3 = this.archimate3;
-		var electrical = this.electrical;
 		
 		if (urlParams['createindex'] == '1')
 		{
@@ -911,63 +664,12 @@
 				  'Palm Treo', 'Signaltower off', 'Signaltower on']);
 
 		this.addFlowchartPalette();
-		this.addActiveDirectoryPalette();
-		this.addAndroidPalette();
-		this.addAtlassianPalette();
-		this.addBootstrapPalette();
 		this.addDFDPalette();
 		this.addErPalette();
-		this.addIos7Palette();
-		this.addIosPalette();
 		this.addMockupPalette();
-		this.addSitemapPalette();
 		this.addUmlPalette(false);
-		this.addAlliedTelesisPalette();
-		this.addAWS3Palette();
-		this.addAWS4bPalette();
-		this.addAWS4Palette();
-		this.addAWS3DPalette();
-		this.addAzurePalette();
-		this.addMSCAEPalette();
-		
-		for (var i = 0; i < cisco.length; i++)
-		{
-			this.addStencilPalette('cisco' + cisco[i], 'Cisco / ' + cisco[i],
-				dir + '/cisco/' + cisco[i].toLowerCase().replace(/ /g, '_') + '.xml',
-				';html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;', null, null, 1.6);
-		}
-
-		this.addCiscoSafePalette();
-		this.addCumulusPalette();
-		this.addCitrixPalette();
-//		this.addGCP2Palette();
-		this.addGCP2Palette();
-		this.addIBMPalette();
 		this.addNetworkPalette();
-		this.addOfficePalette();
 		
-		for (var i = 0; i < rack.length; i++)
-		{
-			if (rack[i].toLowerCase() === 'general')
-			{
-				this.addRackGeneralPalette();
-			}
-			else if (rack[i].toLowerCase() === 'f5')
-			{
-				this.addRackF5Palette();
-			}
-			else
-			{
-				this.addStencilPalette('rack' + rack[i], 'Rack / ' + rack[i],
-					dir + '/rack/' + rack[i].toLowerCase() + '.xml',
-					';html=1;labelPosition=right;align=left;spacingLeft=15;dashed=0;shadow=0;fillColor=#ffffff;');
-			}
-		}
-
-		this.addVeeamPalette();
-		this.addVVDPalette();
-		this.addArchimate3Palette();
-		this.addArchiMatePalette();
 		this.addBpmnPalette(dir, false);
 		this.addLeanMappingPalette();
 		
@@ -1023,120 +725,10 @@
 			}
 		}
 
-		this.addCabinetsPalette();
 		this.addInfographicPalette();
-		
-		for (var i = 0; i < eip.length; i++)
-		{
-			if (eip[i] == 'Message Construction')
-			{
-				this.addEipMessageConstructionPalette();
-			}
-			else if (eip[i] == 'Message Routing')
-			{
-				this.addEipMessageRoutingPalette();
-			}
-			else if (eip[i] == 'Message Transformation')
-			{
-				this.addEipMessageTransformationPalette();
-			}
-			else if (eip[i] == 'Messaging Channels')
-			{
-				this.addEipMessagingChannelsPalette();
-			}
-			else if (eip[i] == 'Messaging Endpoints')
-			{
-				this.addEipMessagingEndpointsPalette();
-			}
-			else if (eip[i] == 'Messaging Systems')
-			{
-				this.addEipMessagingSystemsPalette();
-			}
-			else if (eip[i] == 'System Management')
-			{
-				this.addEipSystemManagementPalette();
-			}
-		}
-		
 		this.addElectricalPalette();
 		this.addFloorplanPalette();
 		
-		for (var i = 0; i < gmdl.length; i++)
-		{
-			if (gmdl[i] == 'Bottom Navigation')
-			{
-				this.addGMDLBottomNavigationPalette();
-			}
-			else if (gmdl[i] == 'Bottom Sheets')
-			{
-				this.addGMDLBottomSheetsPalette();
-			}
-			else if (gmdl[i] == 'Buttons')
-			{
-				this.addGMDLButtonsPalette();
-			}
-			else if (gmdl[i] == 'Cards')
-			{
-				this.addGMDLCardsPalette();
-			}
-			else if (gmdl[i] == 'Chips')
-			{
-				this.addGMDLChipsPalette();
-			}
-			else if (gmdl[i] == 'Dialogs')
-			{
-				this.addGMDLDialogsPalette();
-			}
-			else if (gmdl[i] == 'Dividers')
-			{
-				this.addGMDLDividersPalette();
-			}
-			else if (gmdl[i] == 'Grid Lists')
-			{
-				this.addGMDLGridListsPalette();
-			}
-			else if (gmdl[i] == 'Icons')
-			{
-				this.addGMDLIconsPalette();
-			}
-			else if (gmdl[i] == 'Lists')
-			{
-				this.addGMDLListsPalette();
-			}
-			else if (gmdl[i] == 'Menus')
-			{
-				this.addGMDLMenusPalette();
-			}
-			else if (gmdl[i] == 'Misc')
-			{
-				this.addGMDLMiscPalette();
-			}
-			else if (gmdl[i] == 'Pickers')
-			{
-				this.addGMDLPickersPalette();
-			}
-			else if (gmdl[i] == 'Selection Controls')
-			{
-				this.addGMDLSelectionControlsPalette();
-			}
-			else if (gmdl[i] == 'Sliders')
-			{
-				this.addGMDLSlidersPalette();
-			}
-			else if (gmdl[i] == 'Steppers')
-			{
-				this.addGMDLSteppersPalette();
-			}
-			else if (gmdl[i] == 'Tabs')
-			{
-				this.addGMDLTabsPalette();
-			}
-			else if (gmdl[i] == 'Text Fields')
-			{
-				this.addGMDLTextFieldsPalette();
-			}
-		}
-
 		for (var i = 0; i < pids.length; i++)
 		{
 			if (pids[i] == 'Instruments')
@@ -1179,9 +771,6 @@
 			}
 		}
 		
-		this.addWebIconsPalette();
-		this.addWebLogosPalette();
-				
 		for (var i = 0; i < signs.length; i++)
 		{
 			this.addStencilPalette('signs' + signs[i], 'Signs / ' + signs[i],

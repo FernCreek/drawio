@@ -1178,7 +1178,7 @@
 		{
 			var result = sidebarCreateAdvancedShapes.apply(this, arguments);
 			var graph = this.graph;
-			
+			var sb = this;
 			return result.concat([
 				this.addEntry('tree container', function()
 				{

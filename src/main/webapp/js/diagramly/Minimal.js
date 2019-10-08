@@ -892,12 +892,6 @@ EditorUi.initMinimalTheme = function()
         {
             ui.menus.addMenuItems(menu, ['insertRectangle', 'insertEllipse', 'insertRhombus', '-',
             	'insertText', 'insertLink', '-', 'insertImage'], parent);
-            
-            if (ui.insertTemplateEnabled && !ui.isOffline())
-			{
-                ui.menus.addMenuItems(menu, ['insertTemplate'], parent);
-			}
-            
             menu.addSeparator(parent);
             this.addMenuItems(menu, ['createShape', 'insertFreehand', '-'], parent);
 			this.addSubmenu('insertLayout', menu, parent, mxResources.get('layout'));
@@ -947,13 +941,6 @@ EditorUi.initMinimalTheme = function()
         this.put('view', new Menu(mxUtils.bind(this, function(menu, parent)
         {
             ui.menus.addMenuItems(menu, ['grid', 'guides', '-', 'connectionArrows', 'connectionPoints', '-'], parent);
-            
-			if (typeof(MathJax) !== 'undefined')
-			{
-				var item = ui.menus.addMenuItem(menu, 'mathematicalTypesetting', parent);
-				ui.menus.addLinkToItem(item, 'https://desk.draw.io/support/solutions/articles/16000032875');
-			}
-			
             ui.menus.addMenuItems(menu, ['copyConnect', 'collapseExpand', '-', 'pageScale'], parent);
         })));
 	};

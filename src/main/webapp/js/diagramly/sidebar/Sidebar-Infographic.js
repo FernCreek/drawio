@@ -10,6 +10,7 @@
 		var s4 = mxConstants.STYLE_VERTICAL_LABEL_POSITION + '=bottom;' + mxConstants.STYLE_VERTICAL_ALIGN + '=top;html=1;shape=mxgraph.basic.';
 		var gn = 'mxgraph.infographic';
 		var dt = '';
+		var sb = this;
 		
 		this.addPaletteFunctions('infographic', 'Infographic', false,
 		[
@@ -1236,8 +1237,6 @@
 			   	text1.geometry.relative = true;
 			   	text1.geometry.offset = new mxPoint(200, 0);
 			   	ribbon1.insert(text1);
-			   	var icon1 = new mxCell('', new mxGeometry(50, 32, 50, 37), 'shadow=0;dashed=0;html=1;strokeColor=none;shape=mxgraph.mscae.intune.user_group;fillColor=#FFFFFF;fontSize=15;fontColor=#FFFFFF;align=left;');
-			   	icon1.vertex = true;
 			   	
 			   	var ribbon2 = new mxCell('', new mxGeometry(0, 120, 500, 100), 'html=1;shape=mxgraph.infographic.ribbonSimple;notch1=20;notch2=0;fillColor=#F2931E;strokeColor=none;shadow=1;');
 			   	ribbon2.vertex = true;
@@ -1255,8 +1254,6 @@
 			   	text2.geometry.relative = true;
 			   	text2.geometry.offset = new mxPoint(200, 0);
 			   	ribbon2.insert(text2);
-			   	var icon2 = new mxCell('', new mxGeometry(50, 152, 50, 37), 'shadow=0;dashed=0;html=1;strokeColor=none;shape=mxgraph.mscae.intune.user_group;fillColor=#FFFFFF;fontSize=15;fontColor=#FFFFFF;align=left;');
-			   	icon2.vertex = true;
 			   	
 			   	var ribbon3 = new mxCell('', new mxGeometry(0, 240, 500, 100), 'html=1;shape=mxgraph.infographic.ribbonSimple;notch1=20;notch2=0;fillColor=#AE4132;strokeColor=none;shadow=1;');
 			   	ribbon3.vertex = true;
@@ -1274,8 +1271,6 @@
 			   	text3.geometry.relative = true;
 			   	text3.geometry.offset = new mxPoint(200, 0);
 			   	ribbon3.insert(text3);
-			   	var icon3 = new mxCell('', new mxGeometry(50, 272, 50, 37), 'shadow=0;dashed=0;html=1;strokeColor=none;shape=mxgraph.mscae.intune.user_group;fillColor=#FFFFFF;fontSize=15;fontColor=#FFFFFF;align=left;');
-			   	icon3.vertex = true;
 			   	
 			   	var ribbon4 = new mxCell('', new mxGeometry(0, 360, 500, 100), 'html=1;shape=mxgraph.infographic.ribbonSimple;notch1=20;notch2=0;fillColor=#23445D;strokeColor=none;shadow=1;');
 			   	ribbon4.vertex = true;
@@ -1293,8 +1288,6 @@
 			   	text4.geometry.relative = true;
 			   	text4.geometry.offset = new mxPoint(200, 0);
 			   	ribbon4.insert(text4);
-			   	var icon4 = new mxCell('', new mxGeometry(50, 392, 50, 37), 'shadow=0;dashed=0;html=1;strokeColor=none;shape=mxgraph.mscae.intune.user_group;fillColor=#FFFFFF;fontSize=15;fontColor=#FFFFFF;align=left;');
-			   	icon4.vertex = true;
 			   	
 			   	var ribbon5 = new mxCell('', new mxGeometry(0, 480, 500, 100), 'html=1;shape=mxgraph.infographic.ribbonSimple;notch1=20;notch2=0;fillColor=#12AAB5;strokeColor=none;shadow=1;');
 			   	ribbon5.vertex = true;
@@ -1312,10 +1305,8 @@
 			   	text5.geometry.relative = true;
 			   	text5.geometry.offset = new mxPoint(200, 0);
 			   	ribbon5.insert(text5);
-			   	var icon5 = new mxCell('', new mxGeometry(50, 512, 50, 37), 'shadow=0;dashed=0;html=1;strokeColor=none;shape=mxgraph.mscae.intune.user_group;fillColor=#FFFFFF;fontSize=15;fontColor=#FFFFFF;align=left;');
-			   	icon5.vertex = true;
 			   	
-			   	return sb.createVertexTemplateFromCells([ribbon1, item1, icon1, ribbon2, item2, icon2, ribbon3, item3, icon3, ribbon4, item4, icon4, ribbon5, item5, icon5], 550, 590, 'Ribbon List');
+			   	return sb.createVertexTemplateFromCells([ribbon1, item1, ribbon2, item2, ribbon3, item3, ribbon4, item4, ribbon5, item5], 550, 590, 'Ribbon List');
 			}),				
 			
 			this.addEntry(dt + 'bar graph', function()

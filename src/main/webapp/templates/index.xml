@@ -45,7 +45,6 @@
   <add>Uhttps://jgraph.github.io/drawio-libs/libs/fortinet/Fortinet_VM_Components.xml</add>
 </clibs>
 <template url="business/accd.xml" libs="general"/>
-<template url="business/archimate.xml" libs="general;archimate3"/>
 <template url="business/bpmn.xml" libs="general;bpmn"/>
 <template url="business/business_model_1.xml" libs="general;signs"/>
 <template url="business/business_model_2.xml" libs="general"/>
@@ -117,7 +116,6 @@
 <template url="flowcharts/flowchart_2.xml" libs="general;flowchart"/>
 <template url="flowcharts/workflow_1.xml" libs="general;flowchart"/>
 <template url="layout/blog_wireframe.xml" libs="general;mockups"/>
-<template url="layout/bootstrap.xml" libs="general;bootstrap"/>
 <template url="layout/wireframe_1.xml" libs="general;mockups"/>
 <template url="layout/wireframe_2.xml" libs="general;mockups"/>
 <template url="maps/concept_map_1.xml" libs="general"/>
@@ -129,7 +127,6 @@
 <template url="network/arista.xml" libs="general" clibs="Uhttps%3A%2F%2Fjgraph.github.io%2Fdrawio-libs%2Flibs%2F%2Farista.xml"/>
 <template url="network/cisco_1.xml" libs="general;cisco"/>
 <template url="network/cisco_2.xml" libs="general;cisco"/>
-<template url="network/citrix.xml" libs="general;citrix"/>
 <template url="network/enterprise_1.xml" libs="general;citrix"/>
 <template url="network/fortinet.xml" libs="general" clibs="fortinet"/>
 <template url="network/internet.xml" libs="general;network"/>
@@ -155,7 +152,6 @@
 <template url="software/database_1.xml" libs="general;uml"/>
 <template url="software/database_2.xml" libs="general;uml"/>
 <template url="software/database_3.xml" libs="general;uml"/>
-<template url="software/eip.xml" libs="general;eip"/>
 <template url="software/entity_relationship.xml" libs="general;uml;er"/>
 <template url="tables/authority_matrix.xml" libs="general"/>
 <template url="tables/gantt_1.xml" libs="general"/>

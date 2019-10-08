@@ -9,6 +9,7 @@
 		var s3 = mxConstants.STYLE_VERTICAL_LABEL_POSITION + '=bottom;' + mxConstants.STYLE_VERTICAL_ALIGN + '=top;html=1;strokeWidth=2;shape=';
 		var gn = 'mxgraph.flowchart';
 		var dt = 'dfd data flow diagram ';
+		var sb = this;
 		
 		this.addPaletteFunctions('dfd', 'Data Flow Diagram', false,
 		[

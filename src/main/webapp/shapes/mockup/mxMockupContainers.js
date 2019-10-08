@@ -471,7 +471,7 @@ mxShapeMockupBrowserWindow.prototype.background = function(c, x, y, w, h, bgColo
 mxShapeMockupBrowserWindow.prototype.otherShapes = function(c, x, y, w, h, frameColor, insideColor, closeColor)
 {
 	var strokeWidth = mxUtils.getValue(this.style, mxConstants.STYLE_STROKEWIDTH, '1');
-	var mainText = mxUtils.getValue(this.style, mxShapeMockupBrowserWindow.prototype.cst.MAIN_TEXT, 'http://www.draw.io,Page 1').toString().split(',');
+	var mainText = mxUtils.getValue(this.style, mxShapeMockupBrowserWindow.prototype.cst.MAIN_TEXT, 'http://www.perforce.com,Page 1').toString().split(',');
 
 	//window buttons
 	c.setStrokeColor(frameColor);

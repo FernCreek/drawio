@@ -371,12 +371,6 @@ App.getStoredMode = function()
 	{
 		if (urlParams['offline'] != '1')
 		{
-			// Switches to dropbox mode for db.draw.io
-			if (window.location.hostname == 'db.draw.io' && urlParams['mode'] == null)
-			{
-				urlParams['mode'] = 'dropbox';
-			}
-			
 			App.mode = urlParams['mode'];
 			
 			if (App.mode == null)
@@ -531,13 +525,6 @@ App.main = function(callback, createUi)
 		}
 	}
 	
-	// Redirects to the latest AWS icons
-	if (document.referrer != null && urlParams['libs'] == 'aws3' &&
-		document.referrer.substring(0, 42) == 'https://aws.amazon.com/architecture/icons/')
-	{
-		urlParams['libs'] = 'aws4';
-	}
-	
 	if (window.mxscript != null)
 	{
 		// Injects offline dependencies
@@ -665,134 +652,24 @@ App.main = function(callback, createUi)
 		Editor.initMath();
 	}
 
-	function doLoad(bundle)
-	{
-		// Prefetches asynchronous requests so that below code runs synchronous
-		// Loading the correct bundle (one file) via the fallback system in mxResources. The stylesheet
-		// is compiled into JS in the build process and is only needed for local development.
-		mxUtils.getAll((urlParams['dev'] != '1') ? [bundle] : [bundle,
-			STYLE_PATH + '/default.xml', STYLE_PATH + '/dark-default.xml'], function(xhr)
-		{
-			// Adds bundle text to resources
-			mxResources.parse(xhr[0].getText());
-			
-			// Prepares themes with mapping from old default-style to old XML file
-			if (xhr.length > 2)
-			{
-				Graph.prototype.defaultThemes['default-style2'] = xhr[1].getDocumentElement();
-	 			Graph.prototype.defaultThemes['darkTheme'] = xhr[2].getDocumentElement();
-			}
-			
-			// Main
-			var ui = (createUi != null) ? createUi() : new App(new Editor(
-					urlParams['chrome'] == '0' || uiTheme == 'min',
-					null, null, null, urlParams['chrome'] != '0'));
-			
-			if (window.mxscript != null)
-			{
-				// Loads dropbox for all browsers but IE8 and below (no CORS) if not disabled or if enabled and in embed mode
-				// KNOWN: Picker does not work in IE11 (https://dropbox.zendesk.com/requests/1650781)
-				if (typeof window.DropboxClient === 'function' &&
-					(window.Dropbox == null && window.DrawDropboxClientCallback != null &&
-					(((urlParams['embed'] != '1' && urlParams['db'] != '0') ||
-					(urlParams['embed'] == '1' && urlParams['db'] == '1')) &&
-					isSvgBrowser && (document.documentMode == null || document.documentMode > 9))))
-				{
-					mxscript(App.DROPBOX_URL, function()
-					{
-						// Must load this after the dropbox SDK since they use the same namespace
-						mxscript(App.DROPINS_URL, function()
-						{
-							DrawDropboxClientCallback();
-						}, 'dropboxjs', App.DROPBOX_APPKEY);
-					});
-				}
-				// Disables client
-				else if (typeof window.Dropbox === 'undefined' || typeof window.Dropbox.choose === 'undefined')
-				{
-					window.DropboxClient = null;
-				}
-					
-				// Loads OneDrive for all browsers but IE6/IOS if not disabled or if enabled and in embed mode
-				if (typeof window.OneDriveClient === 'function' &&
-					(typeof OneDrive === 'undefined' && window.DrawOneDriveClientCallback != null &&
-					(((urlParams['embed'] != '1' && urlParams['od'] != '0') || (urlParams['embed'] == '1' &&
-					urlParams['od'] == '1')) && (navigator.userAgent.indexOf('MSIE') < 0 || document.documentMode >= 10))))
-				{
-					mxscript(App.ONEDRIVE_URL, window.DrawOneDriveClientCallback);
-				}
-				// Disables client
-				else if (typeof window.OneDrive === 'undefined')
-				{
-					window.OneDriveClient = null;
-				}
-				
-				// Loads Trello for all browsers but < IE10 if not disabled or if enabled and in embed mode
-				if (typeof window.TrelloClient === 'function' &&
-					(typeof window.Trello === 'undefined' && window.DrawTrelloClientCallback != null &&
-					(((urlParams['embed'] != '1' && urlParams['tr'] != '0') || (urlParams['embed'] == '1' &&
-					urlParams['tr'] == '1')) && (navigator.userAgent.indexOf('MSIE') < 0 || document.documentMode >= 10))))
-				{
-					mxscript(App.TRELLO_JQUERY_URL, function()
-					{
-						// Must load this after the dropbox SDK since they use the same namespace
-						mxscript(App.TRELLO_URL, function()
-						{
-							DrawTrelloClientCallback();
-						});
-					});
-				}
-				// Disables client
-				else if (typeof window.Trello === 'undefined')
-				{
-					window.TrelloClient = null;
-				}
-	
-			}
-			
-			if (callback != null)
-			{
-				callback(ui);
-			}
-			
-			/**
-			 * For developers only
-			 */
-			if (urlParams['chrome'] != '0' && urlParams['test'] == '1')
-			{
-				EditorUi.debug('Started in ' + (new Date().getTime() - t0.getTime()) + 'ms');
-				
-				if (urlParams['export'] != null)
-				{
-					EditorUi.debug('Export:', EXPORT_URL);
-				}
-			}
-		}, function(xhr)
-		{
-			var st = document.getElementById('geStatus');
-			
-			if (st != null)
-			{
-				st.innerHTML = 'Error loading page. <a>Please try refreshing.</a>';
-				
-				// Tries reload with default resources in case any language resources were not available
-				st.getElementsByTagName('a')[0].onclick = function()
-				{
-					mxLanguage = 'en';
-					doLoad(mxResources.getDefaultBundle(RESOURCE_BASE, mxLanguage) ||
-							mxResources.getSpecialBundle(RESOURCE_BASE, mxLanguage));
-				};
-			}
-		});
-	};
-
 	function doMain()
 	{
 		// Adds required resources (disables loading of fallback properties, this can only
 		// be used if we know that all keys are defined in the language specific file)
 		mxResources.loadDefaultBundle = false;
-		doLoad(mxResources.getDefaultBundle(RESOURCE_BASE, mxLanguage) ||
-			mxResources.getSpecialBundle(RESOURCE_BASE, mxLanguage));
+		mxResources.parse(window.getResourceText());
+		// Main
+		var ui = (createUi != null) ? createUi() : new App(new Editor(
+			urlParams['chrome'] == '0' || uiTheme == 'min',
+			null, null, null, urlParams['chrome'] != '0'));
+		window.DropboxClient = null;
+		window.OneDriveClient = null;
+		window.TrelloClient = null;
+		window.mxApp = ui;
+		if (callback != null)
+		{
+			callback(ui);
+		}
 	};
 	
 	// Optional override for autosaveDelay and defaultEdgeLength
@@ -1252,41 +1129,6 @@ App.prototype.init = function()
 						this.updateUserElement();
 						this.restoreLibraries();
 						this.checkLicense();
-						
-						if (App.GOOGLE_REALTIME_EOL - Date.now() >= 0)
-						{
-							if (this.drive.user != null && (!isLocalStorage || mxSettings.settings == null ||
-								mxSettings.settings.closeRealtimeWarning == null || mxSettings.settings.closeRealtimeWarning <
-								new Date().getTime() - (2 * 24 * 60 * 60 * 1000)) &&
-								(!this.editor.chromeless || this.editor.editable))
-							{
-								this.drive.checkRealtimeFiles(mxUtils.bind(this, function()
-								{
-									var footer = createFooter('You need to take action to convert legacy files. Click here.',
-										'https://desk.draw.io/support/solutions/articles/16000092210',
-										'geStatusAlert',
-										mxUtils.bind(this, function()
-										{
-											footer.parentNode.removeChild(footer);
-											this.hideFooter();
-					
-											// Close permanently
-											if (isLocalStorage && mxSettings.settings != null)
-											{
-												mxSettings.settings.closeRealtimeWarning = Date.now();
-												mxSettings.save();
-											}
-										}));
-	
-									document.body.appendChild(footer);
-									
-									window.setTimeout(mxUtils.bind(this, function()
-									{
-										mxUtils.setPrefixedStyle(footer.style, 'transform', 'translate(-50%,0%)');
-									}), 1500);
-								}));
-							}
-						}
 					}))
 					
 					// Notifies listeners of new client
@@ -1418,47 +1260,6 @@ App.prototype.init = function()
 //						req.getStatus() + '.' + (new Date().getTime() - t0)});
 //				}
 			}));
-
-			this.editor.addListener('fileLoaded', mxUtils.bind(this, function()
-			{
-				var file = this.getCurrentFile();
-				
-				if (file.mode == App.MODE_DEVICE && (!isLocalStorage || mxSettings.settings == null ||
-					mxSettings.settings.closeDesktopFooter == null) &&
-					(!this.editor.chromeless || this.editor.editable) &&
-					!this.footerShowing && urlParams['open'] == null)
-				{
-					var footer = createFooter(mxResources.get('downloadDesktop') + '...',
-						'https://get.draw.io/',
-						'geStatusMessage',
-						mxUtils.bind(this, function()
-						{
-							footer.parentNode.removeChild(footer);
-							this.hideFooter();
-
-							// Close permanently
-							if (isLocalStorage && mxSettings.settings != null)
-							{
-								mxSettings.settings.closeDesktopFooter = Date.now();
-								mxSettings.save();
-							}
-						}));
-
-					document.body.appendChild(footer);
-					this.footerShowing = true;
-					
-					window.setTimeout(mxUtils.bind(this, function()
-					{
-						mxUtils.setPrefixedStyle(footer.style, 'transform', 'translate(-50%,0%)');
-					}), 1500);
-					
-					window.setTimeout(mxUtils.bind(this, function()
-					{
-						mxUtils.setPrefixedStyle(footer.style, 'transform', 'translate(-50%,110%)');
-						this.footerShowing = false;
-					}), 15000);
-				}
-			}));
 		}
 	}
 	else if (this.menubar != null)
@@ -1479,33 +1280,6 @@ App.prototype.init = function()
 		this.menubar.container.appendChild(this.buttonContainer);
 	}
 
-	if (uiTheme == 'atlas' && this.menubar != null)
-	{
-		if (this.toggleElement != null)
-		{
-			this.toggleElement.click();
-			this.toggleElement.style.display = 'none';
-		}
-		
-		this.icon = document.createElement('img');
-		this.icon.setAttribute('src', IMAGE_PATH + '/logo-flat-small.png');
-		this.icon.setAttribute('title', mxResources.get('draw.io'));
-		this.icon.style.padding = '6px';
-		this.icon.style.cursor = 'pointer';
-		
-		mxEvent.addListener(this.icon, 'click', mxUtils.bind(this, function(evt)
-		{
-			this.appIconClicked(evt);
-		}));
-		
-		if (mxClient.IS_QUIRKS)
-		{
-			this.icon.style.marginTop = '12px';
-		}
-		
-		this.menubar.container.insertBefore(this.icon, this.menubar.container.firstChild);
-	}
-	
 	if (this.editor.graph.isViewer())
 	{
 		this.initializeViewerMode();
@@ -1597,12 +1371,7 @@ App.prototype.sanityCheck = function()
  */
 App.prototype.isDriveDomain = function()
 {
-	return urlParams['drive'] != '0' &&
-		(window.location.hostname == 'test.draw.io' ||
-		window.location.hostname == 'cdn.draw.io' ||
-		window.location.hostname == 'www.draw.io' ||
-		window.location.hostname == 'drive.draw.io' ||
-		window.location.hostname == 'jgraph.github.io');
+	return false;
 };
 
 /**
@@ -1610,7 +1379,7 @@ App.prototype.isDriveDomain = function()
  */
 App.prototype.isLegacyDriveDomain = function()
 {
-	return urlParams['drive'] == 0 || window.location.hostname == 'legacy.draw.io';
+	return false;
 };
 
 /**
@@ -2241,73 +2010,7 @@ App.prototype.createBackground = function()
  * Authorizes the client, gets the userId and calls <open>.
  */
 App.prototype.appIconClicked = function(evt)
-{
-	if (mxEvent.isAltDown(evt))
-	{
-		this.showSplash(true);
-	}
-	else
-	{
-		var file = this.getCurrentFile();
-		var mode = (file != null) ? file.getMode() : null;
-		
-		if (mode == App.MODE_GOOGLE)
-		{
-			if (file != null && file.desc != null && file.desc.parents != null &&
-				file.desc.parents.length > 0 && !mxEvent.isShiftDown(evt))
-			{
-				// Opens containing folder
-				this.openLink('https://drive.google.com/drive/folders/' + file.desc.parents[0].id);
-			}
-			else if (file != null && file.getId() != null)
-			{
-				this.openLink('https://drive.google.com/open?id=' + file.getId());
-			}
-			else
-			{
-				this.openLink('https://drive.google.com/?authuser=0');
-			}
-		}
-		else if (mode == App.MODE_DROPBOX)
-		{
-			this.openLink('https://www.dropbox.com/');
-		}
-		else if (mode == App.MODE_ONEDRIVE)
-		{
-			this.openLink('https://onedrive.live.com/');
-		}
-		else if (mode == App.MODE_TRELLO)
-		{
-			this.openLink('https://trello.com/');
-		}
-		else if (mode == App.MODE_GITHUB)
-		{
-			if (file != null && file.constructor == GitHubFile)
-			{
-				this.openLink(file.meta.html_url);
-			}
-			else
-			{
-				this.openLink('https://github.com/');
-			}
-		}
-		else if (mode == App.MODE_GITLAB)
-		{
-			if (file != null && file.constructor == GitLabFile)
-			{
-				this.openLink(file.meta.html_url);
-			}
-			else
-			{
-				this.openLink(DRAWIO_GITLAB_URL);
-			}
-		}
-		else if (mode == App.MODE_DEVICE)
-		{
-			this.openLink('https://get.draw.io/');
-		}
-	}
-	
+{	
 	mxEvent.consume(evt);
 };
 
@@ -3012,20 +2715,6 @@ App.prototype.showSplash = function(force)
 		{
 			this.showSplash();
 		}));
-	}
-	else if (!mxClient.IS_CHROMEAPP && (this.mode == null || force))
-	{
-		var rowLimit = (serviceCount == 4) ? 2 : 3;
-		
-		var dlg = new StorageDialog(this, mxUtils.bind(this, function()
-		{
-			this.hideDialog();
-			showSecondDialog();
-		}), rowLimit);
-		
-		this.showDialog(dlg.container, (rowLimit < 3) ? 240 : 300,
-			(serviceCount >= 4) ? 440 : ((this.isOfflineApp()) ? 300 : 320), true, false);
-		dlg.init();
 	}
 	else if (urlParams['create'] == null)
 	{

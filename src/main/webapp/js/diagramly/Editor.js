@@ -7,7 +7,7 @@
 	/**
 	 * Specifies the app name. Default is document.title.
 	 */
-	Editor.prototype.appName = 'draw.io';
+	Editor.prototype.appName = 'Diagram Editor';
 	
 	/**
 	 * Known extensions for own files.
@@ -332,11 +332,11 @@
 		'#\n' +
 		'## ---- CSV below this line. First line are column names. ----\n' +
 		'name,position,id,location,manager,email,fill,stroke,refs,url,image\n' +
-		'Evan Miller,CFO,emi,Office 1,,me@example.com,#dae8fc,#6c8ebf,,https://www.draw.io,https://cdn3.iconfinder.com/data/icons/user-avatars-1/512/users-9-2-128.png\n' +
-		'Edward Morrison,Brand Manager,emo,Office 2,Evan Miller,me@example.com,#d5e8d4,#82b366,,https://www.draw.io,https://cdn3.iconfinder.com/data/icons/user-avatars-1/512/users-10-3-128.png\n' +
-		'Ron Donovan,System Admin,rdo,Office 3,Evan Miller,me@example.com,#d5e8d4,#82b366,"emo,tva",https://www.draw.io,https://cdn3.iconfinder.com/data/icons/user-avatars-1/512/users-2-128.png\n' +
-		'Tessa Valet,HR Director,tva,Office 4,Evan Miller,me@example.com,#d5e8d4,#82b366,,https://www.draw.io,https://cdn3.iconfinder.com/data/icons/user-avatars-1/512/users-3-128.png\n';
-	
+		'John T. Manager,General Manager,jtm,Office 1,,me@example.com,#dae8fc,#6c8ebf,,,\n' +
+		'Joe C. Developer,Developer,jcd,Office 2,John T. Manager,me@example.com,#d5e8d4,#82b366,,\n' +
+		'Jane B. Analyst,Analyst,jba,Office 3,John T. Manager,me@example.com,#d5e8d4,#82b366,"jcd,sat",,\n' +
+		'Sherry A. Tester,Tester,sat,Office 4,John T. Manager,me@example.com,#d5e8d4,#82b366,,,';
+			
 	/**
 	 * Helper function to extract the graph model XML node.
 	 */
@@ -522,13 +522,22 @@
 				if (type == 'zTXt')
 				{
 					var idx = value.indexOf(String.fromCharCode(0));
-					
-					if (value.substring(0, idx) == 'mxGraphModel')
+					var key = value.substring(0, idx);
+					if (key == 'mxGraphModel')
 					{
 						// Workaround for Java URL Encoder using + for spaces, which isn't compatible with JS
 						var xmlData = Graph.bytesToString(pako.inflateRaw(
 							value.substring(idx + 2))).replace(/\+/g,' ');
 						
+						if (xmlData != null && xmlData.length > 0)
+						{
+							result = xmlData;
+						}
+					}
+					if (key == 'mxfile')
+					{
+						var xmlData = Graph.bytesToString(pako.inflate(
+							value.substring(idx + 2)));						
 						if (xmlData != null && xmlData.length > 0)
 						{
 							result = xmlData;
@@ -1655,7 +1664,7 @@
 					
 					w = Math.ceil(scale * w) + 2 * border;
 					h = Math.ceil(scale * h) + 2 * border;
-					
+
 					canvas.setAttribute('width', w);
 			   		canvas.setAttribute('height', h);
 			   		var ctx = canvas.getContext('2d');
@@ -1697,7 +1706,7 @@
 			img.onerror = function(e)
 			{
 				//console.log('img', e, img.src);
-				
+
 				if (error != null)
 				{
 					error(e);
@@ -1735,7 +1744,7 @@
 			catch (e)
 			{
 				//console.log('src', e, img.src);
-				
+			
 				if (error != null)
 				{
 					error(e);
@@ -1841,8 +1850,6 @@
 	 */
 	if (window.ColorDialog)
 	{
-		FilenameDialog.filenameHelpLink = 'https://desk.draw.io/support/solutions/articles/16000091426'; 
-		
 		var colorDialogAddRecentColor = ColorDialog.addRecentColor;
 		
 		ColorDialog.addRecentColor = function(color, max)
@@ -2264,12 +2271,6 @@
 	            
 	            option.style.paddingTop = '5px';
 	            div.appendChild(option);
-	            
-	            var help = ui.menus.createHelpLink('https://desk.draw.io/support/solutions/articles/16000032875');
-	            help.style.position = 'relative';
-	            help.style.marginLeft = '6px';
-	            help.style.top = '2px';
-	            option.appendChild(help);
 	        }
 	        
 			return div;
@@ -4491,19 +4492,14 @@
 	mxStencilRegistry.libraries['mockup'] = [SHAPES_PATH + '/mockup/mxMockupButtons.js'];
 	
 	mxStencilRegistry.libraries['arrows2'] = [SHAPES_PATH + '/mxArrows.js'];
-	mxStencilRegistry.libraries['atlassian'] = [STENCIL_PATH + '/atlassian.xml', SHAPES_PATH + '/mxAtlassian.js'];
 	mxStencilRegistry.libraries['bpmn'] = [SHAPES_PATH + '/bpmn/mxBpmnShape2.js', STENCIL_PATH + '/bpmn.xml'];
 	mxStencilRegistry.libraries['dfd'] = [SHAPES_PATH + '/mxDFD.js'];
 	mxStencilRegistry.libraries['er'] = [SHAPES_PATH + '/er/mxER.js'];
 	mxStencilRegistry.libraries['flowchart'] = [SHAPES_PATH + '/mxFlowchart.js', STENCIL_PATH + '/flowchart.xml'];
-	mxStencilRegistry.libraries['ios'] = [SHAPES_PATH + '/mockup/mxMockupiOS.js'];
 	mxStencilRegistry.libraries['rackGeneral'] = [SHAPES_PATH + '/rack/mxRack.js', STENCIL_PATH + '/rack/general.xml'];
 	mxStencilRegistry.libraries['rackF5'] = [STENCIL_PATH + '/rack/f5.xml'];
 	mxStencilRegistry.libraries['lean_mapping'] = [SHAPES_PATH + '/mxLeanMap.js', STENCIL_PATH + '/lean_mapping.xml'];
 	mxStencilRegistry.libraries['basic'] = [SHAPES_PATH + '/mxBasic.js', STENCIL_PATH + '/basic.xml'];
-	mxStencilRegistry.libraries['ios7icons'] = [STENCIL_PATH + '/ios7/icons.xml'];
-	mxStencilRegistry.libraries['ios7ui'] = [SHAPES_PATH + '/ios7/mxIOS7Ui.js', STENCIL_PATH + '/ios7/misc.xml'];
-	mxStencilRegistry.libraries['android'] = [SHAPES_PATH + '/mxAndroid.js', STENCIL_PATH + '/android/android.xml'];
 	mxStencilRegistry.libraries['electrical/miscellaneous'] = [SHAPES_PATH + '/mxElectrical.js', STENCIL_PATH + '/electrical/miscellaneous.xml'];
 	mxStencilRegistry.libraries['electrical/transmission'] = [SHAPES_PATH + '/mxElectrical.js', STENCIL_PATH + '/electrical/transmission.xml'];
 	mxStencilRegistry.libraries['electrical/logic_gates'] = [SHAPES_PATH + '/mxElectrical.js', STENCIL_PATH + '/electrical/logic_gates.xml'];
@@ -4518,19 +4514,8 @@
 	mxStencilRegistry.libraries['mockup/navigation'] = [SHAPES_PATH + '/mockup/mxMockupNavigation.js', STENCIL_PATH + '/mockup/misc.xml'];
 	mxStencilRegistry.libraries['mockup/text'] = [SHAPES_PATH + '/mockup/mxMockupText.js'];
 	mxStencilRegistry.libraries['floorplan'] = [SHAPES_PATH + '/mxFloorplan.js', STENCIL_PATH + '/floorplan.xml'];
-	mxStencilRegistry.libraries['bootstrap'] = [SHAPES_PATH + '/mxBootstrap.js', STENCIL_PATH + '/bootstrap.xml'];
-	mxStencilRegistry.libraries['gmdl'] = [SHAPES_PATH + '/mxGmdl.js', STENCIL_PATH + '/gmdl.xml'];
-	mxStencilRegistry.libraries['gcp2'] = [SHAPES_PATH + '/mxGCP2.js', STENCIL_PATH + '/gcp2.xml'];
-	mxStencilRegistry.libraries['cabinets'] = [SHAPES_PATH + '/mxCabinets.js', STENCIL_PATH + '/cabinets.xml'];
-	mxStencilRegistry.libraries['archimate'] = [SHAPES_PATH + '/mxArchiMate.js'];
-	mxStencilRegistry.libraries['archimate3'] = [SHAPES_PATH + '/mxArchiMate3.js'];
 	mxStencilRegistry.libraries['sysml'] = [SHAPES_PATH + '/mxSysML.js'];
-	mxStencilRegistry.libraries['eip'] = [SHAPES_PATH + '/mxEip.js', STENCIL_PATH + '/eip.xml'];
 	mxStencilRegistry.libraries['networks'] = [SHAPES_PATH + '/mxNetworks.js', STENCIL_PATH + '/networks.xml'];
-	mxStencilRegistry.libraries['aws3d'] = [SHAPES_PATH + '/mxAWS3D.js', STENCIL_PATH + '/aws3d.xml'];
-	mxStencilRegistry.libraries['aws4'] = [SHAPES_PATH + '/mxAWS4.js', STENCIL_PATH + '/aws4.xml'];
-	mxStencilRegistry.libraries['aws4b'] = [SHAPES_PATH + '/mxAWS4.js', STENCIL_PATH + '/aws4.xml'];
-	mxStencilRegistry.libraries['veeam'] = [STENCIL_PATH + '/veeam/2d.xml', STENCIL_PATH + '/veeam/3d.xml', STENCIL_PATH + '/veeam/veeam.xml'];
 	mxStencilRegistry.libraries['pid2inst'] = [SHAPES_PATH + '/pid2/mxPidInstruments.js'];
 	mxStencilRegistry.libraries['pid2misc'] = [SHAPES_PATH + '/pid2/mxPidMisc.js', STENCIL_PATH + '/pid/misc.xml'];
 	mxStencilRegistry.libraries['pid2valves'] = [SHAPES_PATH + '/pid2/mxPidValves.js'];
@@ -5121,17 +5106,6 @@
 		if (editorUi.editor.cancelFirst)
 		{
 			buttons.appendChild(cancelBtn);
-		}
-		
-		if (!editorUi.isOffline())
-		{
-			var helpBtn = mxUtils.button(mxResources.get('help'), function()
-			{
-				graph.openLink('https://desk.draw.io/support/solutions/articles/16000048947');
-			});
-			
-			helpBtn.className = 'geBtn';
-			buttons.appendChild(helpBtn);
 		}
 		
 		if (PrintDialog.previewEnabled)

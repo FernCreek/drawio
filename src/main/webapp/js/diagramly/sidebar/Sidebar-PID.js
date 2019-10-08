@@ -97,7 +97,7 @@
 		var s = mxConstants.STYLE_VERTICAL_LABEL_POSITION + '=bottom;align=center;html=1;' + mxConstants.STYLE_VERTICAL_ALIGN + '=top;pointerEvents=1;dashed=0;' + mxConstants.STYLE_SHAPE + "=mxgraph.pid2valves.";
 		var gn = 'mxgraph.pid2valves';
 		var dt = 'pid process instrumentation engineering ';
-
+		var sb = this;
 		this.addPaletteFunctions('pidValves', 'Proc. Eng. / Valves', false,
 		[
 			this.createVertexTemplateEntry(sv + 'gate', 100, 60, '', 'Gate Valve', null, null, this.getTagsForStencil(gn, 'valve', dt + 'gate').join(' ')),
