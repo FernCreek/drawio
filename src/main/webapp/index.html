@@ -189,6 +189,12 @@
 			// ignored
 		}
 
+		// Prevent transitions on mac clients due to UI thrashing issues
+		if (urlParams && urlParams['mac'] == '1')
+		{
+			document.body.className += ' noTransitions';
+		}
+
 		var t0 = new Date();
 
 		// Load the resources
