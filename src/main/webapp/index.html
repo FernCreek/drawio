@@ -188,7 +188,6 @@
 		{
 			// ignored
 		}
-
 		var t0 = new Date();
 
 		// Load the resources
@@ -214,6 +213,11 @@
 </div>
 <div id="geFooter" style="visibility:hidden;overflow:hidden;margin-right:170px;height:100%;"></div>
 <script type="text/javascript">
+// Prevent transitions on mac clients due to UI thrashing issues
+if (urlParams && urlParams['mac'] == '1')
+{
+	document.body.className += ' noTransitions';
+}
 /**
  * Main
  */

@@ -1,3 +1,11 @@
+/* set on the body element if you really do not want any transitions, you will get NONE */
+.noTransitions * {
+	-webkit-transition: none 0s !important;
+	-moz-transition: none 0s !important;
+	-o-transition: none 0s !important;
+	-ms-transition: none 0s !important;
+	transition: none 0s !important;
+}
 .geEditor {
 	font-family:Helvetica,Arial,sans-serif;
 	font-size:14px;
