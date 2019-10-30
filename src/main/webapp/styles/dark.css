@@ -38,6 +38,7 @@ html body .geSidebarTooltip {
 	border:1px solid #505759;
 }
 html body .geSprite, html body .geSocialFooter img, html body .mxPopupMenuItem>img {
+	-webkit-filter:invert(100%);
 	filter:invert(100%);
 }
 html body .geFormatContainer {
@@ -116,6 +117,11 @@ html body .geToolbarContainer .geButton:hover, html body .geToolbarContainer .ge
 html body .geToolbarContainer .geLabel:hover, html body .geToolbarContainer .geLabel:active,
 html body .geHsplit:hover, html body .geVsplit:hover {
 	background-color:#000;
+}
+html body .geToolbarContainer .geButton.inlineStyled:hover, html body .geToolbarContainer .geButton.inlineStyled:active,
+html body .geToolbarContainer .geLabel.inlineStyled:hover, html body .geToolbarContainer .geLabel.inlineStyled:active,
+html body .geHsplit.inlineStyled:hover, html body .geVsplit.inlineStyled:hover {
+	background-color:#fff;
 }
 html body .geToolbar {
 	border-color:#505759;
