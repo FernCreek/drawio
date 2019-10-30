@@ -5231,7 +5231,7 @@ App.prototype.updateHeader = function()
 		this.toggleFormatElement.style.right = (uiTheme != 'atlas' && urlParams['embed'] != '1') ? '30px' : '10px';
 		this.toggleFormatElement.style.padding = '2px';
 		this.toggleFormatElement.style.fontSize = '14px';
-		this.toggleFormatElement.className = (uiTheme != 'atlas') ? 'geButton' : '';
+		this.toggleFormatElement.className = (uiTheme != 'atlas') ? 'geButton inlineStyled' : '';
 		this.toggleFormatElement.style.width = '16px';
 		this.toggleFormatElement.style.height = '16px';
 		this.toggleFormatElement.style.backgroundPosition = '50% 50%';
@@ -5241,6 +5241,7 @@ App.prototype.updateHeader = function()
 		if (uiTheme == 'dark')
 		{
 			this.toggleFormatElement.style.filter = 'invert(100%)';
+			this.toggleFormatElement.style.webkitFilter = 'invert(100%)';
 		}
 		
 		// Prevents focus
@@ -5279,7 +5280,7 @@ App.prototype.updateHeader = function()
 		this.fullscreenElement.style.right = (uiTheme != 'atlas' && urlParams['embed'] != '1') ? '50px' : '30px';
 		this.fullscreenElement.style.padding = '2px';
 		this.fullscreenElement.style.fontSize = '14px';
-		this.fullscreenElement.className = (uiTheme != 'atlas') ? 'geButton' : '';
+		this.fullscreenElement.className = (uiTheme != 'atlas') ? 'geButton inlineStyled' : '';
 		this.fullscreenElement.style.width = '16px';
 		this.fullscreenElement.style.height = '16px';
 		this.fullscreenElement.style.backgroundPosition = '50% 50%';
@@ -5307,6 +5308,7 @@ App.prototype.updateHeader = function()
 		if (uiTheme == 'dark')
 		{
 			this.fullscreenElement.style.filter = 'invert(100%)';
+			this.fullscreenElement.style.webkitFilter = 'invert(100%)';
 		}
 		
 		mxEvent.addListener(this.fullscreenElement, 'click', mxUtils.bind(this, function(evt)
@@ -5330,7 +5332,7 @@ App.prototype.updateHeader = function()
 		{
 			this.toggleElement = document.createElement('a');
 			this.toggleElement.setAttribute('title', mxResources.get('collapseExpand'));
-			this.toggleElement.className = 'geButton';
+			this.toggleElement.className = 'geButton inlineStyled';
 			this.toggleElement.style.position = 'absolute';
 			this.toggleElement.style.display = 'inline-block';
 			this.toggleElement.style.width = '16px';
@@ -5349,6 +5351,7 @@ App.prototype.updateHeader = function()
 			if (uiTheme == 'dark')
 			{
 				this.toggleElement.style.filter = 'invert(100%)';
+				this.toggleElement.style.webkitFilter = 'invert(100%)';
 			}
 			
 			// Prevents focus
