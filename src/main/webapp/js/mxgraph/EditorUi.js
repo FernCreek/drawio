@@ -3295,7 +3295,9 @@ EditorUi.prototype.createToolbar = function(container)
  */
 EditorUi.prototype.createSidebar = function(container)
 {
-	return new Sidebar(this, container);
+	var sb = new Sidebar(this, container);
+	window.sb = sb;
+	return sb;
 };
 
 /**
