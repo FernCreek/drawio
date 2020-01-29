@@ -9561,6 +9561,13 @@
 		{
 			if (urlParams['spin'] != '1' || this.spinner.spin(document.body, mxResources.get('loading')))
 			{
+				var updateActivity = mxUtils.bind(this, function () { parent.postMessage(JSON.stringify({event: 'activity'}), '*'); });
+				var listenForActivity = mxUtils.bind(this, function (evt) { mxEvent.addListener(window, evt, updateActivity) });
+				listenForActivity('mousedown');
+				listenForActivity('mousewheel');
+				listenForActivity('keydown');
+				this.editor.graph.model.addListener(mxEvent.CHANGE, updateActivity);
+
 				this.installMessageHandler(mxUtils.bind(this, function(xml, evt, modified)
 				{
 					this.spinner.stop();
