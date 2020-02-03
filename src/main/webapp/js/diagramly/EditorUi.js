@@ -10061,8 +10061,7 @@
 										{
 											this.editor.graph.setEnabled(true);
 											this.spinner.stop();
-											
-											msg.data = this.createSvgDataUri(svg);
+											msg.data =  data.uncompressed ? svg : this.createSvgDataUri(svg);
 											parent.postMessage(JSON.stringify(msg), '*');
 										}));
 
@@ -10078,8 +10077,8 @@
 										{
 											this.editor.graph.setEnabled(true);
 											this.spinner.stop();
-											
-											msg.data = this.createSvgDataUri(mxUtils.getXml(svgRoot));
+											var svg = mxUtils.getXml(svgRoot);
+											msg.data = data.uncompressed ? svg : this.createSvgDataUri(svg);
 											parent.postMessage(JSON.stringify(msg), '*');
 										}));
 									}
@@ -10091,7 +10090,7 @@
 							{
 								var svg = (data.format == 'xmlsvg') ? this.getEmbeddedSvg(this.getFileData(true),
 								this.editor.graph, null, true) : mxUtils.getXml(this.editor.graph.getSvg(bg));
-								msg.data = this.createSvgDataUri(svg);
+								msg.data = data.uncompressed ? svg : this.createSvgDataUri(svg);
 							}
 						}
 
