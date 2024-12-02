@@ -4606,27 +4606,10 @@ mxStencilRegistry.getStencil = function(name)
 							{
 								if (mxStencilRegistry.allowEval)
 								{
-									
-									var ok = false;
-									var text;
-									if (window.fileHelper && fileHelper.getFile)
+									var req = mxUtils.load(fname);
+									if (req != null && ((isQtClient && req.getStatus() === 0) || (!isQtClient && req.getStatus() >= 200 && req.getStatus() <= 299)))
 									{
-										ok = true;
-										text = fileHelper.getFile(fname);
-									}
-									else
-									{
-										var req = mxUtils.load(fname);
-										ok = req != null && req.getStatus() >= 200 && req.getStatus() <= 299;
-										if (ok)
-										{
-											text = req.getText();
-											eval.call(window, req.getText());
-										}
-									}
-									if (ok)
-									{
-										eval.call(window, text);
+										eval.call(window, req.getText());
 									}
 								}
 							}
@@ -4744,25 +4727,11 @@ mxStencilRegistry.loadStencilSet = function(stencilFile, postStencilLoad, force,
 // Loads the given stencil XML file.
 mxStencilRegistry.loadStencil = function(filename, fn)
 {
-	var helper = window.fileHelper && fileHelper.getFile;
-	if (helper)
-	{
-		var text = helper(filename);
-		var parser = new DOMParser();
-		var xml = parser.parseFromString(text, 'text/xml');
-		if (fn) {
-			fn(xml);
-		}
-		else
-		{
-			return xml;
-		}
-	}
-	else if (fn != null)
+	if (fn != null)
 	{
 		var req = mxUtils.get(filename, mxUtils.bind(this, function(req)
 		{
-			fn((req.getStatus() >= 200 && req.getStatus() <= 299) ? req.getXml() : null);
+			fn(((isQtClient && req.getStatus() === 0) || (!isQtClient && req.getStatus() >= 200 && req.getStatus() <= 299)) ? req.getXml() : null);
 		}));
 	}
 	else
